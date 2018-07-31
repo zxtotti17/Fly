@@ -10,7 +10,7 @@
     
     
     
-    <title>categories | Fly blog</title>
+    <title>alchemist_manage服务器部署 | Fly blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -161,21 +161,60 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">categories</h1>
+    <h1 class="title">alchemist_manage服务器部署</h1>
     
     <div class="cube-article-header">
-        <div class="cube-article-date page">
+        <div class="cube-article-date">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2018-07-03
+            2018-07-11
         </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/Ruby-on-Rails/">#Ruby on Rails</a>
+    
+    <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
+    
+</div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        
+        <ol>
+<li>manage服务器代码上传<br>copy srpg_too 目录到 /var/webapps/alchemist_mnt    (文件所有者必须为webapp)</li>
+<li>ruby运行环境构建<br>2.1 检查依赖<br>-ruby(v2.2.2p95~)<br>-gem bundle<br>-Node.js<br>-npm<br>-bower<br>-msyql<br>-redis<br>2.1 设置gem源为淘宝源<br>Gemfile （描述gem之间依赖文件）需要如下修改<br>source ‘<a href="https://gems.ruby-china.org/&#39;" target="_blank" rel="noopener">https://gems.ruby-china.org/&#39;</a><br>2.2  安装gem file<br>su  - webapp<br>bundle install<br>2.2.1 安装bundle 命令不存在，。<br>gem install bundle<br>2.2.2 提示gem命令不存在，就执行rbenv global 2.2.2， 如果无法运行就重新安装ruby 2.2.2 版本，流程如下<br>su - webapp<br>git clone <a href="https://github.com/rbenv/rbenv.git" target="_blank" rel="noopener">https://github.com/rbenv/rbenv.git</a> ~/.rbenv<br>cd ~/.rbenv &amp;&amp; src/configure &amp;&amp; make -C src<br>echo ‘export PATH=”$HOME/.rbenv/bin:$PATH”‘ &gt;&gt; ~/.bash_profile<br>~/.rbenv/bin/rbenv init<br>echo ‘eval “$(rbenv init -)”‘ &gt;&gt; ~/.bash_profile<br>source ~/.bash_profile<br>git clone <a href="https://github.com/rbenv/ruby-build.git" target="_blank" rel="noopener">https://github.com/rbenv/ruby-build.git</a> ~/.rbenv/plugins/ruby-build<br>rbenv install 2.2.2<br>rbenv global 2.2.2<br>ruby -v</li>
+<li>Cap环境部署<br>3.1 配置SSH无密码登录<br>配置config/deploy/produciton.rb ssh无密码登陆（id_rsa.pub和authorized_keys） 设置authorized_keys，记得chmod 600，否则无法生效）<br>3.1.1 生成sshkey:<br>cd ~/.ssh<br>ssh-keygen<br>输入公钥名：id_rsa<br><img src="/zxtotti17.github.io/2018/07/11/alchemist-manage服务器部署/AADD68F1E0BFC2CE65796C5F7EEBD67E.jpg" alt="AADD68F1E0BFC2CE65796C5F7EEBD67E"><br>3.1.2 配置authorized_keys<br>cat  id_rsa.pub &gt;&gt; authorized_keys<br>chmod -R 600 authorized_keys<br>chmod 700 ~/.ssh<br>备注：如果还是无法实现无密码登录，再清空下~/.ssh/koown_hosts文件（echo “” &gt; ~/.sshown_hosts);<br><img src="/zxtotti17.github.io/2018/07/11/alchemist-manage服务器部署/AADD68F1E0BFC2CE65796C5F7EEBD67E.jpg" alt="AADD68F1E0BFC2CE65796C5F7EEBD67E"><br>3.1.3执行以下deploy命令：production环境为例<br>cd current<br>bundle exec cap production mkdir:sockets<br>bundle exec cap production bower:install<br>4.前端bower模块安装<br>4.1 Node.js 安装bower<br>npm install -g bower –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a>   (-g不一定要)<br>4.2install Bowerfile<br>   bundle exec rake bower:install<br>4.3 manage server DB构建<br>bundle exec rake maint:create maint:migrate</li>
+</ol>
+<p>4.4 添加管理账号<br>  bundle exec rake maint:seed</p>
+<p>4.5  配置crontab<br>    缺少crontab 会影响预约奖励发放<br>    cd 根目录（current/）<br>    gem install whenever ，检查config/schedule.rb是否存在<br>    whenever -w（写入到crontab 中）<br>    查看log/cron_log.log日志是否已生成。</p>
+
     </div>
 </div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2018/07/24/ALC-Sentry/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                ALC_Sentry
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2018/07/03/hexo-安装遇到的问题/">
+                hexo 常用笔记
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
 
 
 
@@ -342,7 +381,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/node-js/">#node.js</a>
         </div>
         
@@ -352,12 +391,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Ruby-on-Rails/">#Ruby on Rails</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
         </div>
         
@@ -372,7 +411,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/td-agent/">#td-agent</a>
         </div>
         

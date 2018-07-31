@@ -10,7 +10,7 @@
     
     
     
-    <title>Fly blog</title>
+    <title>项目各种配置文件 | Fly blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -160,29 +160,28 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            
-<div class="cube-excerpt" id="cube-excerpt-项目各种配置文件">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/07/31/项目各种配置文件/">项目各种配置文件</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-07-31
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/nginx/" class="cube-excerpt-tag-link">#nginx</a>
-                
-                <a href="/tags/td-agent/" class="cube-excerpt-tag-link">#td-agent</a>
-                
-            </div>
+            <div class="cube-article">
+    <h1 class="title">项目各种配置文件</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2018-07-31
         </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/nginx/">#nginx</a>
+    
+    <a href="/tags/td-agent/">#td-agent</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
         
-        
-           <ol>
+        <ol>
 <li>srpg.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line"><span class="comment">#    server_name alctwobt.ssl.91dena.cn;</span></span><br><span class="line">    server_name alccn2-release.ssl.91dena.cn;</span><br><span class="line"><span class="comment">#    ssl on;</span></span><br><span class="line">    ssl_certificate /root/cert/91dena_cn.pem;</span><br><span class="line">    ssl_certificate_key /root/cert/91dena_cn.key;</span><br><span class="line"></span><br><span class="line">    proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    proxy_set_header Host <span class="variable">$http_host</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">## APP  11</span></span><br><span class="line">    location / &#123;</span><br><span class="line">        <span class="comment"># proxy</span></span><br><span class="line">        proxy_pass http://127.0.0.1:5000/;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="comment"># connect to backend with keepalives</span></span><br><span class="line"></span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Connection <span class="string">""</span>;</span><br><span class="line">        proxy_send_timeout 30s;</span><br><span class="line">        proxy_read_timeout 60s;</span><br><span class="line">        proxy_connect_timeout 30s;</span><br><span class="line">    &#125;</span><br><span class="line">    access_log  /home/<span class="built_in">log</span>/nginxlog/cnrelease/alccn2.ssl.91dena.cn.access.log main;</span><br><span class="line">    error_log   /home/<span class="built_in">log</span>/nginxlog/cnrelease/alccn2.ssl.91dena.cn.error.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -203,177 +202,28 @@
 </ol>
 <p><a href="/download/td-agent.conf">点击下载</a></p>
 
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/07/31/项目各种配置文件/">阅读全文</a>
-    </footer>
+    </div>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-ALC_Sentry">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/07/24/ALC-Sentry/">ALC_Sentry</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-07-24
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Sentry/" class="cube-excerpt-tag-link">#Sentry</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
+<div class="cube-article-nav">
+    <ul>
         
         
-           <p>1) 安装环境<br>执行命令创建名为sentry的数据库<br>createdb -E utf-8 sentry<br>为sentry项目初始化数据<br>sentry –config=~/.sentry/sentry.conf.py upgrade<br>创建新用户<br>sentry –config=~/.sentry/sentry.conf.py createuser<br>然后就可以启动服务了<br>sentry –config=~/.sentry/sentry.conf.py start<br>另外，还需要启动Worker<br>sentry –config=~/.sentry/sentry.conf.py celery worker -B<br>假设web服务器端口是9000，那么访问localhost:9000就能开始使用sentry了！</p>
-<p>source /usr/local/vir-sentry/bin/activate<br>sentry –config=~/.sentry/sentry.conf.py start &gt;&gt; /usr/local/vir-sentry/logs/sentry.log 2&gt;&amp;1 &amp;</p>
-<p>2）相关命令<br>2.1启动<br>su - webapp<br>source /usr/local/vir-sentry/bin/activate<br>supervisord -c /etc/supervisord.conf<br>supervisorctl start all<br>2.2关闭命令<br>su - webapp<br>source /usr/local/vir-sentry/bin/activate<br>supervisorctl stop all<br>killall supervisord</p>
-<p>*创建账号 sentry createuser<br>3)基于node的测试demo<br><a href="/download/raven-node-master.zip">raven-node-master.zip</a></p>
-<p>4.）界面显示<br><img src="/zxtotti17.github.io/2018/07/24/ALC-Sentry/9E26651338B7EE1345DAFDEF0ADDB9C4.jpg" alt="9E26651338B7EE1345DAFDEF0ADDB9C4"></p>
-<p>web 服务器相关配置<br><img src="/zxtotti17.github.io/2018/07/24/ALC-Sentry/E4B1DB656739C13A7F75B5578E3CB678.jpg" alt="E4B1DB656739C13A7F75B5578E3CB678"></p>
-
+        <li class="next">
+            <a href="/2018/07/24/ALC-Sentry/">
+                ALC_Sentry
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
         
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/07/24/ALC-Sentry/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-alchemist_manage服务器部署">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/07/11/alchemist-manage服务器部署/">alchemist_manage服务器部署</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-07-11
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Ruby-on-Rails/" class="cube-excerpt-tag-link">#Ruby on Rails</a>
-                
-                <a href="/tags/Capistrano-自动部署工具/" class="cube-excerpt-tag-link">#Capistrano 自动部署工具</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <ol>
-<li>manage服务器代码上传<br>copy srpg_too 目录到 /var/webapps/alchemist_mnt    (文件所有者必须为webapp)</li>
-<li>ruby运行环境构建<br>2.1 检查依赖<br>-ruby(v2.2.2p95~)<br>-gem bundle<br>-Node.js<br>-npm<br>-bower<br>-msyql<br>-redis<br>2.1 设置gem源为淘宝源<br>Gemfile （描述gem之间依赖文件）需要如下修改<br>source ‘<a href="https://gems.ruby-china.org/&#39;" target="_blank" rel="noopener">https://gems.ruby-china.org/&#39;</a><br>2.2  安装gem file<br>su  - webapp<br>bundle install<br>2.2.1 安装bundle 命令不存在，。<br>gem install bundle<br>2.2.2 提示gem命令不存在，就执行rbenv global 2.2.2， 如果无法运行就重新安装ruby 2.2.2 版本，流程如下<br>su - webapp<br>git clone <a href="https://github.com/rbenv/rbenv.git" target="_blank" rel="noopener">https://github.com/rbenv/rbenv.git</a> ~/.rbenv<br>cd ~/.rbenv &amp;&amp; src/configure &amp;&amp; make -C src<br>echo ‘export PATH=”$HOME/.rbenv/bin:$PATH”‘ &gt;&gt; ~/.bash_profile<br>~/.rbenv/bin/rbenv init<br>echo ‘eval “$(rbenv init -)”‘ &gt;&gt; ~/.bash_profile<br>source ~/.bash_profile<br>git clone <a href="https://github.com/rbenv/ruby-build.git" target="_blank" rel="noopener">https://github.com/rbenv/ruby-build.git</a> ~/.rbenv/plugins/ruby-build<br>rbenv install 2.2.2<br>rbenv global 2.2.2<br>ruby -v</li>
-<li>Cap环境部署<br>3.1 配置SSH无密码登录<br>配置config/deploy/produciton.rb ssh无密码登陆（id_rsa.pub和authorized_keys） 设置authorized_keys，记得chmod 600，否则无法生效）<br>3.1.1 生成sshkey:<br>cd ~/.ssh<br>ssh-keygen<br>输入公钥名：id_rsa<br><img src="/zxtotti17.github.io/2018/07/11/alchemist-manage服务器部署/AADD68F1E0BFC2CE65796C5F7EEBD67E.jpg" alt="AADD68F1E0BFC2CE65796C5F7EEBD67E"><br>3.1.2 配置authorized_keys<br>cat  id_rsa.pub &gt;&gt; authorized_keys<br>chmod -R 600 authorized_keys<br>chmod 700 ~/.ssh<br>备注：如果还是无法实现无密码登录，再清空下~/.ssh/koown_hosts文件（echo “” &gt; ~/.sshown_hosts);<br><img src="/zxtotti17.github.io/2018/07/11/alchemist-manage服务器部署/AADD68F1E0BFC2CE65796C5F7EEBD67E.jpg" alt="AADD68F1E0BFC2CE65796C5F7EEBD67E"><br>3.1.3执行以下deploy命令：production环境为例<br>cd current<br>bundle exec cap production mkdir:sockets<br>bundle exec cap production bower:install<br>4.前端bower模块安装<br>4.1 Node.js 安装bower<br>npm install -g bower –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a>   (-g不一定要)<br>4.2install Bowerfile<br>   bundle exec rake bower:install<br>4.3 manage server DB构建<br>bundle exec rake maint:create maint:migrate</li>
-</ol>
-<p>4.4 添加管理账号<br>  bundle exec rake maint:seed</p>
-<p>4.5  配置crontab<br>    缺少crontab 会影响预约奖励发放<br>    cd 根目录（current/）<br>    gem install whenever ，检查config/schedule.rb是否存在<br>    whenever -w（写入到crontab 中）<br>    查看log/cron_log.log日志是否已生成。</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/07/11/alchemist-manage服务器部署/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-hexo 常用笔记">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/07/03/hexo-安装遇到的问题/">hexo 常用笔记</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-07-03
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/node-js/" class="cube-excerpt-tag-link">#node.js</a>
-                
-                <a href="/tags/hexo/" class="cube-excerpt-tag-link">#hexo</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>建站的过程网上一大把就不记录了，主要写下遇到的几个问题</p>
-<ol>
-<li>github上的项目名称一定要和自己在github上的用户名一致，否则会生成静态文件后点开会白屏</li>
-<li>多看看官方手册上面有详细记录<a href="https://hexo.io/zh-cn/docs" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs</a></li>
-</ol>
-<p>hexo g -d<br>hexo clean<br>hexo s<br>hexo目录下执行这样一句话npm install hexo-asset-image –save，这是下载安装一个可以上传本地图片的插件,再运行hexo n “xxxx”来生成md博文</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/07/03/hexo-安装遇到的问题/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Hello World">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/06/15/hello-world/">Hello World</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-06-15
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/06/15/hello-world/">阅读全文</a>
-    </footer>
+    </ul>
 </div>
 
 
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
 
-<ul class="cube-pagination cube-pagination-6">
-    
-    <li class="cube-pagination-prev disabled">
-        <span>« 上一页</span>
-    </li>
-    
-    
-        
-            
-            <li class="cube-pagination-index disabled">
-                <span>1</span>
-            </li>
-            
-        
-    
 
-    
-    <li class="cube-pagination-next disabled">
-        <span>下一页 »</span>
-    </li>
-    
-</ul>
 
-<!--其他组件后续添加-->
         </div>
         <div class="cube-right">
             
@@ -537,7 +387,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/node-js/">#node.js</a>
         </div>
         
@@ -562,12 +412,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/nginx/">#nginx</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/td-agent/">#td-agent</a>
         </div>
         

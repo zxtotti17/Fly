@@ -10,7 +10,7 @@
     
     
     
-    <title>categories | Fly blog</title>
+    <title>ALC_Sentry | Fly blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -161,21 +161,57 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">categories</h1>
+    <h1 class="title">ALC_Sentry</h1>
     
     <div class="cube-article-header">
-        <div class="cube-article-date page">
+        <div class="cube-article-date">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2018-07-03
+            2018-07-24
         </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/Sentry/">#Sentry</a>
+    
+</div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        
+        <p>1) 安装环境<br>执行命令创建名为sentry的数据库<br>createdb -E utf-8 sentry<br>为sentry项目初始化数据<br>sentry –config=~/.sentry/sentry.conf.py upgrade<br>创建新用户<br>sentry –config=~/.sentry/sentry.conf.py createuser<br>然后就可以启动服务了<br>sentry –config=~/.sentry/sentry.conf.py start<br>另外，还需要启动Worker<br>sentry –config=~/.sentry/sentry.conf.py celery worker -B<br>假设web服务器端口是9000，那么访问localhost:9000就能开始使用sentry了！</p>
+<p>source /usr/local/vir-sentry/bin/activate<br>sentry –config=~/.sentry/sentry.conf.py start &gt;&gt; /usr/local/vir-sentry/logs/sentry.log 2&gt;&amp;1 &amp;</p>
+<p>2）相关命令<br>2.1启动<br>su - webapp<br>source /usr/local/vir-sentry/bin/activate<br>supervisord -c /etc/supervisord.conf<br>supervisorctl start all<br>2.2关闭命令<br>su - webapp<br>source /usr/local/vir-sentry/bin/activate<br>supervisorctl stop all<br>killall supervisord</p>
+<p>*创建账号 sentry createuser<br>3)基于node的测试demo<br><a href="/download/raven-node-master.zip">raven-node-master.zip</a></p>
+<p>4.）界面显示<br><img src="/zxtotti17.github.io/2018/07/24/ALC-Sentry/9E26651338B7EE1345DAFDEF0ADDB9C4.jpg" alt="9E26651338B7EE1345DAFDEF0ADDB9C4"></p>
+<p>web 服务器相关配置<br><img src="/zxtotti17.github.io/2018/07/24/ALC-Sentry/E4B1DB656739C13A7F75B5578E3CB678.jpg" alt="E4B1DB656739C13A7F75B5578E3CB678"></p>
+
     </div>
 </div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2018/07/31/项目各种配置文件/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                项目各种配置文件
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2018/07/11/alchemist-manage服务器部署/">
+                alchemist_manage服务器部署
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
 
 
 
@@ -342,32 +378,32 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/node-js/">#node.js</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/hexo/">#hexo</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Ruby-on-Rails/">#Ruby on Rails</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Sentry/">#Sentry</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/nginx/">#nginx</a>
         </div>
         

@@ -45,4 +45,31 @@ ruby -v
 cd ~/.ssh
 ssh-keygen
 输入公钥名：id_rsa
-![AADD68F1E0BFC2CE65796C5F7EEBD67E](alchemist_manage服务器部署/AADD68F1E0BFC2CE65796C5F7EEBD67E.jpg)
+![AADD68F1E0BFC2CE65796C5F7EEBD67E](AADD68F1E0BFC2CE65796C5F7EEBD67E.jpg)
+3.1.2 配置authorized_keys
+cat  id_rsa.pub >> authorized_keys
+chmod -R 600 authorized_keys
+chmod 700 ~/.ssh
+备注：如果还是无法实现无密码登录，再清空下~/.ssh/koown_hosts文件（echo "" > ~/.sshown_hosts);
+![AADD68F1E0BFC2CE65796C5F7EEBD67E](AADD68F1E0BFC2CE65796C5F7EEBD67E.jpg)
+3.1.3执行以下deploy命令：production环境为例
+ cd current
+  bundle exec cap production mkdir:sockets 
+bundle exec cap production bower:install
+4.前端bower模块安装
+4.1 Node.js 安装bower
+npm install -g bower --registry=https://registry.npm.taobao.org   (-g不一定要)
+4.2install Bowerfile
+  	bundle exec rake bower:install
+4.3 manage server DB构建
+ bundle exec rake maint:create maint:migrate
+ 
+4.4 添加管理账号
+  bundle exec rake maint:seed
+
+4.5  配置crontab 
+    缺少crontab 会影响预约奖励发放
+    cd 根目录（current/）
+    gem install whenever ，检查config/schedule.rb是否存在
+    whenever -w（写入到crontab 中）
+    查看log/cron_log.log日志是否已生成。
