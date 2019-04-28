@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="zxtotti17">
+    
+    
+    
+    
+    
+    
+    <title>redis笔记 | Fly blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Fly - blog</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/snow.gif');
+            background-repeat: no-repeat;
+            background-position: center -56px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/snow.gif');
+            background-position: center -100px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Fly - blog</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '900'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">redis笔记</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2018-08-01
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/redis/">#redis</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <ol>
+<li><p>Redis是什么、特点、优势<br>redis是Key-Value数据库,数据包含各种数据 字符串String、字典Hash、列表List、集合Set、有序集合SortedSet等<br>redis支持数据持久化，重启再次加载,支持数据备份(支持分布式),Redis是单进程单线程的<br>Redis的优势<br>性能高 读速度110000/s 写速度81000/s<br>丰富的数据类型</p>
+</li>
+<li><p>redis安装（Linux）、启动、退出、设置密码、远程连接<br>2.1 安装redis<br>下载redis安装包（如：redis-2.8.17.tar.gz）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf redis-2.8.17.tar.gz</span><br><span class="line"><span class="built_in">cd</span> redis-2.8.17</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.2 后台启动服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup redis-server &amp;</span><br></pre></td></tr></table></figure></p>
+<p>2.3 启动客户端、验证<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/bin</span><br><span class="line">redis-cli</span><br><span class="line"><span class="built_in">set</span> var <span class="string">"hello world"</span></span><br><span class="line">get var</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<ol start="3">
+<li><p>Reis key<br>序号    Redis keys命令及描述<br>1    DEL key<br>该命令用于在 key 存在是删除 key。<br>2    DUMP key<br>序列化给定 key ，并返回被序列化的值。<br>3    EXISTS key<br>检查给定 key 是否存在。<br>4    EXPIRE key seconds<br>为给定 key 设置过期时间。<br>5    EXPIREAT key timestamp<br>EXPIREAT 的作用和 EXPIRE 类似，都用于为 key 设置过期时间。 不同在于 EXPIREAT 命令接受的时间参数是 UNIX 时间戳(unix timestamp)。<br>6    PEXPIRE key milliseconds<br>设置 key 的过期时间亿以毫秒计。<br>7    PEXPIREAT key milliseconds-timestamp<br>设置 key 过期时间的时间戳(unix timestamp) 以毫秒计<br>8    KEYS pattern<br>查找所有符合给定模式( pattern)的 key 。例如keys * 返回所有的key<br>9    MOVE key db<br>将当前数据库的 key 移动到给定的数据库 db 当中。<br>10    PERSIST key<br>移除 key 的过期时间，key 将持久保持。<br>11    PTTL key<br>以毫秒为单位返回 key 的剩余的过期时间。<br>12    TTL key<br>以秒为单位，返回给定 key 的剩余生存时间(TTL, time to live)。<br>13    RANDOMKEY<br>从当前数据库中随机返回一个 key 。<br>14    RENAME key newkey<br>修改 key 的名称<br>15    RENAMENX key newkey<br>仅当 newkey 不存在时，将 key 改名为 newkey 。<br>16    TYPE key<br>返回 key 所储存的值的类型。<br>…<br><a href="http://redisdoc.com" target="_blank" rel="noopener">中文文档</a></p>
+</li>
+<li><p>Redis 发布订阅<br>占时没用过，看起来跟微信公众号一样,Pub/Sub做延时队列可以用在玩家登录排队上</p>
+</li>
+<li><p>Redis事务<br>一个事务从开始到结束经过以下三个阶段：</p>
+</li>
+</ol>
+<p>开始事务<br>命令入队<br>执行事务<br>例子</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">localhost:6379&gt; MULTI</span><br><span class="line">OK</span><br><span class="line">localhost:6379&gt; <span class="built_in">set</span> name jihite</span><br><span class="line">QUEUED</span><br><span class="line">localhost:6379&gt; get name</span><br><span class="line">QUEUED</span><br><span class="line">localhost:6379&gt; sadd language <span class="string">"c++"</span> <span class="string">"python"</span> <span class="string">"java"</span></span><br><span class="line">QUEUED</span><br><span class="line">localhost:6379&gt; smembers language</span><br><span class="line">QUEUED</span><br><span class="line">localhost:6379&gt; <span class="built_in">exec</span></span><br></pre></td></tr></table></figure>
+<p>说明：事务以MULTI开始，以EXEC结束</p>
+<ol start="6">
+<li>关闭持久化与持久化<br>(RDB)bgsave做镜像全量持久化，aof做增量持久化<br>RDB相当于快照，是fork一个子进程，快照成功后替换<br>aof相当于日志，cow，copy and write,一条一条的数据</li>
+</ol>
+<p>这是redis与其他缓存服务的比较明显的特点,如memcache<br>修改配置文件，改完后重启。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#save 900 1  </span></span><br><span class="line"><span class="comment">#save 300 10  </span></span><br><span class="line"><span class="comment">#save 60 10000</span></span><br></pre></td></tr></table></figure></p>
+<p>或执行操作命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONFIG SET save <span class="string">""</span></span><br></pre></td></tr></table></figure></p>
+<ol start="7">
+<li>redis相比memcached有哪些优势？</li>
+</ol>
+<p>(1) memcached所有的值均是简单的字符串，redis作为其替代者，支持更为丰富的数据类型<br>(2) redis的速度比memcached快很多<br>(3) redis可以持久化其数据</p>
+<ol start="8">
+<li>redis常见性能问题和解决方案：</li>
+</ol>
+<p>(1) Master最好不要做任何持久化工作，如RDB内存快照和AOF日志文件<br>(2) 如果数据比较重要，某个Slave开启AOF备份数据，策略设置为每秒同步一次<br>(3) 为了主从复制的速度和连接的稳定性，Master和Slave最好在同一个局域网内<br>(4) 尽量避免在压力很大的主库上增加从库<br>(5) 主从复制不要用图状结构，用单向链表结构更为稳定，即：Master &lt;- Slave1 &lt;- Slave2 &lt;- Slave3…</p>
+<p>这样的结构方便解决单点故障问题，实现Slave对Master的替换。如果Master挂了，可以立刻启用Slave1做Master，其他不变。</p>
+<ol start="9">
+<li><p>Redis 常见的性能问题都有哪些？如何解决？<br>1).Master写内存快照，save命令调度rdbSave函数，会阻塞主线程的工作，当快照比较大时对性能影响是非常大的，会间断性暂停服务，所以Master最好不要写内存快照。<br>2).Master AOF持久化，如果不重写AOF文件，这个持久化方式对性能的影响是最小的，但是AOF文件会不断增大，AOF文件过大会影响Master重启的恢复速度。Master最好不要做任何持久化工作，包括内存快照和AOF日志文件，特别是不要启用内存快照做持久化,如果数据比较关键，某个Slave开启AOF备份数据，策略为每秒同步一次。<br>3).Master调用BGREWRITEAOF重写AOF文件，AOF在重写的时候会占大量的CPU和内存资源，导致服务load过高，出现短暂服务暂停现象。<br>4). Redis主从复制的性能问题，为了主从复制的速度和连接的稳定性，Slave和Master最好在同一个局域网内</p>
+</li>
+<li><p>Redis分布式锁<br>拿setnx来争抢锁，抢到之后，再用expire给锁加一个过期时间防止锁忘记了释放。</p>
+</li>
+<li><p>Redis做异步队列<br>一般使用list结构作为队列，rpush生产消息，lpop消费消息。当lpop没有消息的时候，要适当sleep一会再重试。</p>
+</li>
+</ol>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2018/08/03/翻译提取替换/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                翻译提取替换
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2018/07/31/项目各种配置文件/">
+                项目各种配置文件
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>zxtotti17</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>14</span>文章</a>
+        <a class="count tags"><span>11</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/03/07/Erlang语言学习/" title="Erlang语言学习">Erlang语言学习</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/10/31/Mysql笔记/" title="Mysql笔记">Mysql笔记</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/开发环境安装/">#开发环境安装</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/开发语言/">#开发语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据库/">#数据库</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/服务端框架/">#服务端框架</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/脚本工具/">#脚本工具</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Sentry/">#Sentry</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/node-js/">#node.js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/hexo/">#hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/mysql/">#mysql</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/redis/">#redis</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Ruby-on-Rails/">#Ruby on Rails</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/nginx/">#nginx</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/td-agent/">#td-agent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Erlang/">#Erlang</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/zxtotti17" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>友情链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/DIYgod.jpg">
+            <a href="http://feiilin.com/" target="_blank">dfei</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/micblo.png">
+            <a href="https://blog.hellozwh.com" target="_blank">zwh</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 zxtotti17
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/zxtotti17" target="_blank">zxtotti17</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

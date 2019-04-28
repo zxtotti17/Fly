@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="zxtotti17">
+    
+    
+    
+    
+    
+    
+    <title>pomelo学习笔记 | Fly blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Fly - blog</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/snow.gif');
+            background-repeat: no-repeat;
+            background-position: center -56px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/snow.gif');
+            background-position: center -100px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Fly - blog</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '900'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">pomelo学习笔记</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2018-10-23
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/node-js/">#node.js</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>环境<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">getBase()	 Application.getBase(); 获取应用程序的基本路径</span><br><span class="line"><span class="built_in">set</span>(setting, val, attach);	 Application.set();  setting:应用程序的配置；val:需要设置的值；attach:是否将设配置应用到程序。设置或返回配置的值。</span><br><span class="line">get(setting)	 Application.get(); setting:应用程序的配置。获取配置的值</span><br><span class="line">enabled(setting)	 Application.enabled(); setting:应用程序的配置。检查配置是否启用</span><br><span class="line">disabled(setting)	 Application.disabled(); setting:应用程序的配置。检查配置是否禁用</span><br><span class="line">enbale(setting)	 Application.enbale(); setting:应用程序的配置。启用配置</span><br><span class="line"><span class="built_in">disable</span>(setting)	 Application.disabled(); setting:应用程序的配置。禁用配置</span><br><span class="line">configure(env,fn,<span class="built_in">type</span>)	Application.configure();env:应用环境;fn:回调函数;<span class="built_in">type</span>:服务类型.</span><br></pre></td></tr></table></figure></p>
+<p>初始化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">start()	 Application.start(); 启动应用程序。它会加载默认的组件和启动所有加载的组件。</span><br><span class="line">registerAdmin(moduleId,module,opts)	 Application.registerAdmin();  moduleId:(可选参数)模块id或者有modeule提供的模块Id;module:模块对象或者模块的工程函数;opts:模块构造函数的参数。</span><br><span class="line">filter(filter)	 Application.filter(); filter:provide before and after filter method。add a filter to before and after filter</span><br><span class="line">before(bf)	 Application.before(); bf:before filter。Add before filter</span><br><span class="line">after(af)	 Application.after(); af:after filter。Add after filter</span><br><span class="line">load(name, component, opts)	 Application.load(); name:组件的名称（可选）；component：组件的实例或者组件的工厂函数；opts：组件构造函数的参数（可选）。加载组件</span><br><span class="line">loadConfig(key,val)	 Application.loadConfig(); key:环境配置的关键字;val:环境配置的值。导入json文件来配置环境。</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>组件相关</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">route(serverType, routeFunc)	</span><br><span class="line"> Application.route(); serverType:服务类型;routeFunc:路由功能函数,如：routeFunc(session, msg, app, cb)</span><br><span class="line"></span><br><span class="line">未指定的服务类型设置路由功能。如：</span><br><span class="line"></span><br><span class="line">app.route(<span class="string">'area'</span>, routeFunc);</span><br><span class="line"></span><br><span class="line">var routeFunc = <span class="keyword">function</span>(session, msg, app, cb) &#123;</span><br><span class="line"></span><br><span class="line">　　// all request to area would be route to the first area server</span><br><span class="line"></span><br><span class="line">　　var areas = app.getServersByType(<span class="string">'area'</span>);</span><br><span class="line"></span><br><span class="line">　　cb(null, areas[0].id);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>获取相关配置，组件方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">getMaster()	Application.getMaster() 获得Maseter服务的信息</span><br><span class="line">getCurServer()	Application.getCurServer() 获得当前服务的信息</span><br><span class="line">getServerId()	Application.getServerId() 获得当前服务的ID</span><br><span class="line">getServerType()	Application.getServerType() 获得当前服务的类型</span><br><span class="line">getServers()	Application.getServers() 获得所有当前服务的信息</span><br><span class="line">getServersFromConfig()	Application.getServersFromConfig() 从server.json中获得所有服务的信息</span><br><span class="line">getServerTypes()	Application.getServerTypes() 获得所有服务的类型</span><br><span class="line">getServerById(serverId)	Application.getServerById() 根据服务ID从服务集群中获得服务的信息</span><br><span class="line">getServerFromConfig(serverId)	Application.getServerFromConfig() 根据服务ID从server.json中获得服务的信息</span><br><span class="line">getServersByType(serverType)	Application.getServersByType() 根据服务类型获取服务信息</span><br><span class="line">isFrontend(server)	Application.isFrontend() 检查服务是否是一个前端服务</span><br><span class="line">isBackend(server)	Application.isBackend() 检查服务是否是一个后端服务</span><br><span class="line">isMaster()	Application.isMaster() 检查当前服务是否是主服务</span><br><span class="line">addServers(servers)	Application.addServers() servers：新服务信息列表。添加新服务信息到正在运行的应用程序中</span><br><span class="line">removerServers(ids)	Application.removerServers() ids：服务id列表。从当前运行的应用程序中删除服务信息。</span><br></pre></td></tr></table></figure>
+<p>创建和维护本地服务的信道。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">createChannel(name)	ChannelService.prototype.createChannel() 根据信道名称创建信道，如果该信道已存在则返回已存在的信道</span><br><span class="line">getChannel(name,create)	ChannelService.prototype.getChannel() name:信道名称，create:如果为<span class="literal">true</span>，并且信道不存在时，则创建新的信道。根据信道名称获取信道</span><br><span class="line">destroyChannel(name)	ChannelService.prototype.destroyChannel() 根据信道名称，删除信道</span><br><span class="line">pushMessageByUids(route, msg, uids, cb)	ChannelService.prototype.pushMessageByUids() route：消息路由；msg：发送到客户端的消息；uids：接收消息的客户端列表，格式 [&#123;uid: userId, sid: frontendServerId&#125;]；cb：回调函数 cb(err)。根据uids将消息推送给客户端，如果uids中的sid未指定，则忽略相应的客户端</span><br><span class="line">broadcast(stype,route, msg, opts, cb)	ChannelService.prototype.broadcast() stype：前端服务的类型;route：路由;msg：消息;opts：广播参数;cb：回调函数。广播消息到所有连接的客户端。</span><br></pre></td></tr></table></figure>
+<p>Channel</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add(uid,sid)	Channel.prototype.add() uid:用户编号；sid：用户连接到的前端服务id。添加指定用户到信道。</span><br><span class="line">leave(uid,sid)	Channel.prototype.leave() uid:用户编号；sid：用户连接到的前端服务id。从信道中移除用户。</span><br><span class="line">getMembers()	Channel.prototype.getMembers() 获得信道中的成员</span><br><span class="line">getMember(uid)	Channel.prototype.getMember() 根据uid获取成员信息</span><br><span class="line">destroy()	Channel.prototype.destroy() 销毁信道</span><br><span class="line">pushMessage(route,msg,cb)	Channel.prototype.pushMessage()  route：消息路由，msg：要推送的消息，cb：回调函数。将消息推送给信道的所有成员。</span><br></pre></td></tr></table></figure>
+<p>GlobalChannelService</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">destroyChannel(name,cb)	GlobalChannelService.prototype.destroyChannel() uid:用户编号；sid：用户连接到的前端服务id。添加指定用户到信道。</span><br><span class="line">add(name,uid,sid,cb)	</span><br><span class="line">GlobalChannelService.prototype.add() name:信道名称；uid：用户id；sid：前端服务id；cb：回调函数。</span><br><span class="line"></span><br><span class="line">添加成员到信道。</span><br><span class="line"></span><br><span class="line">leave(name,uid,sid,cb)	GlobalChannelService.prototype.leave() </span><br><span class="line">name:信道名称；uid：用户id；sid：前端服务id；cb：回调函数。</span><br><span class="line"></span><br><span class="line">从信道中移除成员。</span><br><span class="line"></span><br><span class="line">pushMessage()	</span><br><span class="line">GlobalChannelService.prototype.pushMessage(serverType, route, msg,channelName, opts, cb)</span><br><span class="line"></span><br><span class="line">serverType：前端服务的类型, route：路由, msg：需要推送的消息,channelName：信道名称, opts：参数, cb：回调函数</span><br><span class="line"></span><br><span class="line">通过全局信道发送消息</span><br></pre></td></tr></table></figure>
+<p>LocalSessionService</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">get(frontendId,sid,cb)	LocalSeesionService.prototype.get() frontendId:会话链接的前端服务id,sid:会话Id,cb:回调函数。根据前端服务和会话id获得本地会话</span><br><span class="line">getByUid(name,uid,sid,cb)	</span><br><span class="line">LocalSeesionService.prototype.getByUid()  frontendId:会话链接的前端服务id,uid：绑定到会话的用户id，cb：回调函数。args: cb(err, localSessions)。根据前端服务和用户id获取本地会话。</span><br><span class="line"></span><br><span class="line">kickBySid(name,uid,sid,cb)	LocalSeesionService.prototype.kickBySid() frontendId:会话链接的前端服务id,sid:会话Id,cb:回调函数。根据会话id踢掉该会话。</span><br><span class="line">kickByUid()	</span><br><span class="line">LocalSeesionService.prototype.kickByUid() frontendId:会话链接的前端服务id,uid：用户id,cb:回调函数。根据用户id踢掉该会话。</span><br></pre></td></tr></table></figure>
+<p>LocalSession</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span>(uid,cb)	LocalSeesion.prototype.bind() uid:用户编号;cb:回调函数。callfunction(err)。绑定当前会话，用于前端服务的推送和全局会话的绑定。</span><br><span class="line">unbind(uid,cb)	</span><br><span class="line">LocalSeesion.prototype.unbind() uid:用户编号;cb:回调函数。callfunction(err)。取消绑定。</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(key,value)	LocalSeesion.prototype.set() 将key/value添加到本地会话中</span><br><span class="line">get(key)	</span><br><span class="line">LocalSeesion.prototype.get() 根据key从本地会话中获取值。</span><br><span class="line"></span><br><span class="line">push(key,cb)	</span><br><span class="line">LocalSeesion.prototype.push() 将本地会话中的key/value添加到全局会话中</span><br><span class="line"></span><br><span class="line">pushAll(cb)	LocalSeesion.prototype.pushAll() 将本地会话中的所有key/value添加到全会话中</span><br></pre></td></tr></table></figure>
+<p>SessionService</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">kick(uid,cb)	SeesionService.prototype.kick() 踢掉该用户的所有离线会话</span><br><span class="line">kickBySession(sid,cb)	</span><br><span class="line">SeesionService.prototype.kickBySession() sid:会话编号;cb:回调函数。根据会话id踢掉一个在线用户</span><br><span class="line"></span><br><span class="line">sendMessage(sid,msg)	SeesionService.prototype.sendMessage()根据会话id向客户端发送消息</span><br><span class="line">sendMessageByUid(uid,msg)	</span><br><span class="line">SeesionService.prototype.sendMessageByUid() 根据用户id向客户端发送消息</span><br></pre></td></tr></table></figure>
+<p>Pomelo</p>
+<p><code>`</code> bash<br>createApp(opts)    Pomelo.create() 创建一个Pomelo 应用程序</p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2018/10/31/Mysql笔记/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                Mysql笔记
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2018/08/21/node笔记/">
+                node笔记
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>zxtotti17</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>14</span>文章</a>
+        <a class="count tags"><span>11</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/03/07/Erlang语言学习/" title="Erlang语言学习">Erlang语言学习</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/10/31/Mysql笔记/" title="Mysql笔记">Mysql笔记</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/开发环境安装/">#开发环境安装</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/开发语言/">#开发语言</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/数据库/">#数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/服务端框架/">#服务端框架</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/脚本工具/">#脚本工具</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Sentry/">#Sentry</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/node-js/">#node.js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/hexo/">#hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/mysql/">#mysql</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/redis/">#redis</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Ruby-on-Rails/">#Ruby on Rails</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/nginx/">#nginx</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/td-agent/">#td-agent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Erlang/">#Erlang</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/zxtotti17" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>友情链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/DIYgod.jpg">
+            <a href="http://feiilin.com/" target="_blank">dfei</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/micblo.png">
+            <a href="https://blog.hellozwh.com" target="_blank">zwh</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 zxtotti17
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/zxtotti17" target="_blank">zxtotti17</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

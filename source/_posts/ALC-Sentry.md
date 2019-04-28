@@ -21,7 +21,7 @@ sentry --config=~/.sentry/sentry.conf.py celery worker -B
 
 source /usr/local/vir-sentry/bin/activate 
 sentry --config=~/.sentry/sentry.conf.py start >> /usr/local/vir-sentry/logs/sentry.log 2>&1 &
-
+<!-- more -->
 
 2）相关命令
 2.1启动 

@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="zxtotti17">
+    
+    
+    
+    
+    
+    
+    <title>Fly blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">开启歌词</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">回到顶部</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Fly - blog</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/snow.gif');
+            background-repeat: no-repeat;
+            background-position: center -56px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/snow.gif');
+            background-position: center -100px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Fly - blog</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '900'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            
+<div class="cube-excerpt" id="cube-excerpt-node笔记">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/08/21/node笔记/">node笔记</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-08-21
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/node-js/" class="cube-excerpt-tag-link">#node.js</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>第一章 node简介<br>1.1 node的特点<br>    1.1.1 异步I/O 绝大多数操作以异步方式进行调用<br>    1.1.2 事件与回调函数<br>    1.1.3 单线程，但是可以用WebWorkers的方式解决单线程的问题（子进程），用Master-Worker用master统一管理子进程<br>    1.1.4 跨平台<br>    1.1.5 c++速度大约是node的2.5倍</p>
+<p>1.2 模块机制<br>    1.2.1 分为核心模块和文件模块，require没带路径的为核心模块，直接加载进内存，带路径的为文件模块,核心模块中有c++和javascript两部分，其中buffer、crypto、evals、fs、os、等都是c++部分的<br>    1.2.2 npm安装的核心模块插件在package.json中定义</p>
+<p>1.3 异步I/O<br>    1.3.1 操作系统内核对I/O只有：阻塞I/O和非阻塞I/O，node中的异步I/O模型由事件循环、观察者、请求对象、I/O线程池<br>    整个系统可以理解为事件循环相当于厨子，不停的询问是否有新的订单，观察者相当于收银员，收到用户的订单将订单分给厨子，而订单相当于请求对象，参数、方法、回调函数斗封装在请求对象中,<br>    以上是异步I/O的第一步，io线程池相当于放订单的桌子，  请求对象-&gt;I/O线程池-&gt;观察者-&gt;事件循环<br>    1.3.2 非异步的I/O主要是setTimeout(),setInterval(),setImmediate(),process.nextTick()</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/08/21/node笔记/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-翻译提取替换">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/08/03/翻译提取替换/">翻译提取替换</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-08-03
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <ol>
+<li>提取<br>提取客户端资源文件之前先要用uc-utf8.php转utf-8 把unicode码转成utf-8的日文在提取<br>将要提取文字的文件整合与getFromHtml.sh 放在同目录下<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#sh getFromHtml.sh under the template fold</span></span><br><span class="line"><span class="comment">#Change filelist.csv to excel file, and give it to translator</span></span><br><span class="line"></span><br><span class="line">LANG=C grep -r -n -v <span class="string">'^[[:cntrl:][:print:]]*$'</span> . | grep -v <span class="string">"using UnityEngine;"</span> | grep -v svn | grep -v //  | grep -v \* |  grep -v <span class="string">"\&#123;\*"</span> |  grep -v <span class="string">"\"Name\""</span> &gt; ~/lj_2_3_server.csv</span><br><span class="line"></span><br><span class="line">sed -i <span class="string">'s@\t@ @g'</span> ~/lj_2_3_server.csv</span><br><span class="line">sed -i <span class="string">'s@\([^:]*\):\([0-9]*\):@\1\t\2\t@'</span> ~/lj_2_3_server.csv</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="/download/getFromHtml.sh">点击下载</a><br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/08/03/翻译提取替换/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-redis笔记">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/08/01/redis笔记/">redis笔记</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-08-01
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/redis/" class="cube-excerpt-tag-link">#redis</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <ol>
+<li><p>Redis是什么、特点、优势<br>redis是Key-Value数据库,数据包含各种数据 字符串String、字典Hash、列表List、集合Set、有序集合SortedSet等<br>redis支持数据持久化，重启再次加载,支持数据备份(支持分布式),Redis是单进程单线程的<br>Redis的优势<br>性能高 读速度110000/s 写速度81000/s<br>丰富的数据类型</p>
+</li>
+<li><p>redis安装（Linux）、启动、退出、设置密码、远程连接<br>2.1 安装redis<br>下载redis安装包（如：redis-2.8.17.tar.gz）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf redis-2.8.17.tar.gz</span><br><span class="line"><span class="built_in">cd</span> redis-2.8.17</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.2 后台启动服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup redis-server &amp;</span><br></pre></td></tr></table></figure></p>
+<p>2.3 启动客户端、验证<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/bin</span><br><span class="line">redis-cli</span><br><span class="line"><span class="built_in">set</span> var <span class="string">"hello world"</span></span><br><span class="line">get var</span><br></pre></td></tr></table></figure></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/08/01/redis笔记/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-项目各种配置文件">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/07/31/项目各种配置文件/">项目各种配置文件</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-07-31
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/nginx/" class="cube-excerpt-tag-link">#nginx</a>
+                
+                <a href="/tags/td-agent/" class="cube-excerpt-tag-link">#td-agent</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <ol>
+<li>srpg.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line"><span class="comment">#    server_name alctwobt.ssl.91dena.cn;</span></span><br><span class="line">    server_name alccn2-release.ssl.91dena.cn;</span><br><span class="line"><span class="comment">#    ssl on;</span></span><br><span class="line">    ssl_certificate /root/cert/91dena_cn.pem;</span><br><span class="line">    ssl_certificate_key /root/cert/91dena_cn.key;</span><br><span class="line"></span><br><span class="line">    proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    proxy_set_header Host <span class="variable">$http_host</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">## APP  11</span></span><br><span class="line">    location / &#123;</span><br><span class="line">        <span class="comment"># proxy</span></span><br><span class="line">        proxy_pass http://127.0.0.1:5000/;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="comment"># connect to backend with keepalives</span></span><br><span class="line"></span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Connection <span class="string">""</span>;</span><br><span class="line">        proxy_send_timeout 30s;</span><br><span class="line">        proxy_read_timeout 60s;</span><br><span class="line">        proxy_connect_timeout 30s;</span><br><span class="line">    &#125;</span><br><span class="line">    access_log  /home/<span class="built_in">log</span>/nginxlog/cnrelease/alccn2.ssl.91dena.cn.access.log main;</span><br><span class="line">    error_log   /home/<span class="built_in">log</span>/nginxlog/cnrelease/alccn2.ssl.91dena.cn.error.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="/download/nginx.conf">点击下载</a><br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/07/31/项目各种配置文件/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-ALC_Sentry">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/07/24/ALC-Sentry/">ALC_Sentry</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-07-24
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Sentry/" class="cube-excerpt-tag-link">#Sentry</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>1) 安装环境<br>执行命令创建名为sentry的数据库<br>createdb -E utf-8 sentry<br>为sentry项目初始化数据<br>sentry –config=~/.sentry/sentry.conf.py upgrade<br>创建新用户<br>sentry –config=~/.sentry/sentry.conf.py createuser<br>然后就可以启动服务了<br>sentry –config=~/.sentry/sentry.conf.py start<br>另外，还需要启动Worker<br>sentry –config=~/.sentry/sentry.conf.py celery worker -B<br>假设web服务器端口是9000，那么访问localhost:9000就能开始使用sentry了！</p>
+<p>source /usr/local/vir-sentry/bin/activate<br>sentry –config=~/.sentry/sentry.conf.py start &gt;&gt; /usr/local/vir-sentry/logs/sentry.log 2&gt;&amp;1 &amp;<br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/07/24/ALC-Sentry/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-alchemist_manage服务器部署">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/07/11/alchemist-manage服务器部署/">alchemist_manage服务器部署</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-07-11
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Ruby-on-Rails/" class="cube-excerpt-tag-link">#Ruby on Rails</a>
+                
+                <a href="/tags/Capistrano-自动部署工具/" class="cube-excerpt-tag-link">#Capistrano 自动部署工具</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <ol>
+<li>manage服务器代码上传<br>copy srpg_too 目录到 /var/webapps/alchemist_mnt    (文件所有者必须为webapp)</li>
+<li>ruby运行环境构建<br>2.1 检查依赖<br>-ruby(v2.2.2p95~)<br>-gem bundle<br>-Node.js<br>-npm<br>-bower<br>-msyql<br>-redis<br>2.1 设置gem源为淘宝源<br>Gemfile （描述gem之间依赖文件）需要如下修改<br>source ‘<a href="https://gems.ruby-china.org/&#39;" target="_blank" rel="noopener">https://gems.ruby-china.org/&#39;</a><br>2.2  安装gem file<br>su  - webapp<br>bundle install<br>2.2.1 安装bundle 命令不存在，。<br>gem install bundle<br>2.2.2 提示gem命令不存在，就执行rbenv global 2.2.2， 如果无法运行就重新安装ruby 2.2.2 版本，流程如下<br>su - webapp<br>git clone <a href="https://github.com/rbenv/rbenv.git" target="_blank" rel="noopener">https://github.com/rbenv/rbenv.git</a> ~/.rbenv<br>cd ~/.rbenv &amp;&amp; src/configure &amp;&amp; make -C src<br>echo ‘export PATH=”$HOME/.rbenv/bin:$PATH”‘ &gt;&gt; ~/.bash_profile<br>~/.rbenv/bin/rbenv init<br>echo ‘eval “$(rbenv init -)”‘ &gt;&gt; ~/.bash_profile<br>source ~/.bash_profile<br>git clone <a href="https://github.com/rbenv/ruby-build.git" target="_blank" rel="noopener">https://github.com/rbenv/ruby-build.git</a> ~/.rbenv/plugins/ruby-build<br>rbenv install 2.2.2<br>rbenv global 2.2.2<br>ruby -v</li></ol>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/07/11/alchemist-manage服务器部署/">阅读全文</a>
+    </footer>
+</div>
+
+
+
+<ul class="cube-pagination cube-pagination-6">
+    
+    <li class="cube-pagination-prev">
+        <a href="/">« 上一页</a>
+    </li>
+    
+    
+        
+            
+            <li class="cube-pagination-index">
+                <a href="/">1</a>
+            </li>
+            
+        
+            
+            <li class="cube-pagination-index disabled">
+                <span>2</span>
+            </li>
+            
+        
+            
+            <li class="cube-pagination-index">
+                <a href="/page/3">3</a>
+            </li>
+            
+        
+    
+
+    
+    <li class="cube-pagination-next">
+        <a href="/page/3/">下一页 »</a>
+    </li>
+    
+</ul>
+
+<!--其他组件后续添加-->
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>zxtotti17</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>14</span>文章</a>
+        <a class="count tags"><span>11</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: '开启歌词',
+            close: '关闭歌词'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/03/07/Erlang语言学习/" title="Erlang语言学习">Erlang语言学习</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/10/31/Mysql笔记/" title="Mysql笔记">Mysql笔记</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/开发环境安装/">#开发环境安装</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/开发语言/">#开发语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据库/">#数据库</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/服务端框架/">#服务端框架</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/脚本工具/">#脚本工具</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Sentry/">#Sentry</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/node-js/">#node.js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/hexo/">#hexo</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/mysql/">#mysql</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/redis/">#redis</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Ruby-on-Rails/">#Ruby on Rails</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/nginx/">#nginx</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/td-agent/">#td-agent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Erlang/">#Erlang</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>个人链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/zxtotti17" target="_blank">GitHub</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>友情链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/DIYgod.jpg">
+            <a href="http://feiilin.com/" target="_blank">dfei</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/micblo.png">
+            <a href="https://blog.hellozwh.com" target="_blank">zwh</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 zxtotti17
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/zxtotti17" target="_blank">zxtotti17</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

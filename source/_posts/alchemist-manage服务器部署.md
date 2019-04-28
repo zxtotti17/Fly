@@ -38,6 +38,7 @@ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 rbenv install 2.2.2
 rbenv global 2.2.2
 ruby -v
+<!-- more -->
 3. Cap环境部署
 3.1 配置SSH无密码登录
 配置config/deploy/produciton.rb ssh无密码登陆（id_rsa.pub和authorized_keys） 设置authorized_keys，记得chmod 600，否则无法生效）

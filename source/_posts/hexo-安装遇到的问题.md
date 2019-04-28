@@ -14,6 +14,3 @@ hexo g -d
 hexo clean
 hexo s
 hexo目录下执行这样一句话npm install hexo-asset-image --save，这是下载安装一个可以上传本地图片的插件,再运行hexo n "xxxx"来生成md博文
-
-
-
