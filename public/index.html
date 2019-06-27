@@ -161,6 +161,40 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-Hello World">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/04/25/hello-world/">Hello World</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-04-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/04/25/hello-world/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-Erlang OTP学习">
     <header class="cube-excerpt-header">
         <h1><a href="/2019/04/09/Erlang-OTP学习/">Erlang OTP学习</a></h1>
@@ -190,6 +224,8 @@
 <p>这几种返回值有什么区别呢？<br>如果返回的是以reply开头，那么Reply将会作为响应返回给客户端<br>如果返回的是以noreply开头，那么服务器将不会返回任何消息给客户端（这会导致客户端阻塞，因为客户端调用的gen_server:call方法是一个同步调用，当它发出请求后，会一直等待服务器发送响应消息，除非等待超时） </p>
 <p>6.gen_server:cast(ServerRef, Request)<br>这个方法同gen_server:call(ServerRef, Request)，但它最大的区别就是该调用是异步的，它不需要等待服务器返回任何处理结果 </p>
 <p>7.Module:handle_cast(Request, State) -&gt; Result<br>这个方法用来处理gen_server:cast(ServerRef, Request)发出的请求，由于不会返回结果给客户端，所以参数列表中也没有From </p>
+<p>8.检查进程是否加载<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erlang:whereis(?MODULE).</span><br></pre></td></tr></table></figure></p>
+<p>9.查看进程的信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erlang:process_info(pid(0,PID,0)).</span><br></pre></td></tr></table></figure></p>
 
         
     </article>
@@ -198,9 +234,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Erlang语言学习">
+<div class="cube-excerpt" id="cube-excerpt-Erlang List模块函数使用大全">
     <header class="cube-excerpt-header">
-        <h1><a href="/2019/03/07/Erlang语言学习/">Erlang语言学习</a></h1>
+        <h1><a href="/2019/03/07/Erlang List模块函数使用大全/">Erlang List模块函数使用大全</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
@@ -209,18 +245,38 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
+                <a href="/tags/Erlang/" class="cube-excerpt-tag-link">#Erlang</a>
+                
             </div>
         </div>
     </header>
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>Erlang特点</p>
-
+           <p>Erlang List模块函数使用大全</p>
+<p>一，带函数Pred<br>1, all(Pred, List) -&gt; boolean()<br>如果List中的每个元素作为Pred函数的参数执行，结果都返回true，那么all函数返回true，<br>否则返回false</p>
+<p>例子：</p>
+<p>lists:all(fun(E) -&gt; true end,[1,2,3,4]).</p>
+<p>结果</p>
+<p>true</p>
+<p>2, any(Pred, List) -&gt; boolean()<br>如果List中至少有一个元素作为Pred函数的参数执行，结果返回true，那么any函数返回true，<br>否则返回false</p>
+<p>例子</p>
+<p>lists:any(fun(E) -&gt; is_integer(E) end,[q,2,a,4]).</p>
+<p>结果</p>
+<p>true</p>
+<p>3，dropwhile(Pred, List1) -&gt; List2<br>将List1列表中的元素作为参数执行Pred函数，如果返回true，将其丢弃，最后返回剩余元素<br>组成的列表</p>
+<p>例子</p>
+<p>lists:dropwhile(fun(E) -&gt; is_atom(E) end,[a,1,2,a,b]).</p>
+<p>结果</p>
+<p>[1,2,a,b]</p>
+<p>4，filter(Pred, List1) -&gt; List2<br>返回一个列表，这个列表是由List1中执行Pred函数返回true的元素组成。</p>
+<p>lists:filter(fun(E) -&gt; is_integer(E) end,[q,2,a,4]).</p>
+<p>结果：</p>
+<p>[2,4]</p>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/03/07/Erlang语言学习/">阅读全文</a>
+        <a class="cube-excerpt-more" href="/2019/03/07/Erlang List模块函数使用大全/">阅读全文</a>
     </footer>
 </div>
 
@@ -334,35 +390,6 @@
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2018/10/31/Mysql笔记/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-pomelo学习笔记">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/10/23/pomelo学习笔记/">pomelo学习笔记</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-10-23
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/node-js/" class="cube-excerpt-tag-link">#node.js</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>环境<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">getBase()	 Application.getBase(); 获取应用程序的基本路径</span><br><span class="line"><span class="built_in">set</span>(setting, val, attach);	 Application.set();  setting:应用程序的配置；val:需要设置的值；attach:是否将设配置应用到程序。设置或返回配置的值。</span><br><span class="line">get(setting)	 Application.get(); setting:应用程序的配置。获取配置的值</span><br><span class="line">enabled(setting)	 Application.enabled(); setting:应用程序的配置。检查配置是否启用</span><br><span class="line">disabled(setting)	 Application.disabled(); setting:应用程序的配置。检查配置是否禁用</span><br><span class="line">enbale(setting)	 Application.enbale(); setting:应用程序的配置。启用配置</span><br><span class="line"><span class="built_in">disable</span>(setting)	 Application.disabled(); setting:应用程序的配置。禁用配置</span><br><span class="line">configure(env,fn,<span class="built_in">type</span>)	Application.configure();env:应用环境;fn:回调函数;<span class="built_in">type</span>:服务类型.</span><br></pre></td></tr></table></figure></p>
-<p>初始化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">start()	 Application.start(); 启动应用程序。它会加载默认的组件和启动所有加载的组件。</span><br><span class="line">registerAdmin(moduleId,module,opts)	 Application.registerAdmin();  moduleId:(可选参数)模块id或者有modeule提供的模块Id;module:模块对象或者模块的工程函数;opts:模块构造函数的参数。</span><br><span class="line">filter(filter)	 Application.filter(); filter:provide before and after filter method。add a filter to before and after filter</span><br><span class="line">before(bf)	 Application.before(); bf:before filter。Add before filter</span><br><span class="line">after(af)	 Application.after(); af:after filter。Add after filter</span><br><span class="line">load(name, component, opts)	 Application.load(); name:组件的名称（可选）；component：组件的实例或者组件的工厂函数；opts：组件构造函数的参数（可选）。加载组件</span><br><span class="line">loadConfig(key,val)	 Application.loadConfig(); key:环境配置的关键字;val:环境配置的值。导入json文件来配置环境。</span><br></pre></td></tr></table></figure>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/10/23/pomelo学习笔记/">阅读全文</a>
     </footer>
 </div>
 
@@ -480,7 +507,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
+                    <a href="/2019/04/25/hello-world/" title="Hello World">Hello World</a>
                 </p>
             </div>
             
@@ -494,7 +521,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/07/Erlang语言学习/" title="Erlang语言学习">Erlang语言学习</a>
+                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
                 </p>
             </div>
         </li>
@@ -507,7 +534,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
+                    <a href="/2019/03/07/Erlang List模块函数使用大全/" title="Erlang List模块函数使用大全">Erlang List模块函数使用大全</a>
                 </p>
             </div>
         </li>
@@ -520,7 +547,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
+                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
                 </p>
             </div>
         </li>
@@ -533,7 +560,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/10/31/Mysql笔记/" title="Mysql笔记">Mysql笔记</a>
+                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
                 </p>
             </div>
         </li>
@@ -556,23 +583,23 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/开发语言/">#开发语言</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/数据库/">#数据库</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/categories/服务端框架/">#服务端框架</a>
+            <a href="/categories/数据库/">#数据库</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/脚本工具/">#脚本工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/服务端框架/">#服务端框架</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/开发语言/">#开发语言</a>
         </div>
         
     </div>
@@ -587,8 +614,8 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Sentry/">#Sentry</a>
+        <div class="cube-box ">
+            <a href="/tags/Erlang/">#Erlang</a>
         </div>
         
         
@@ -603,17 +630,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/mysql/">#mysql</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/redis/">#redis</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Sentry/">#Sentry</a>
         </div>
         
         
@@ -622,12 +644,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/nginx/">#nginx</a>
         </div>
         
@@ -637,8 +659,13 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Erlang/">#Erlang</a>
+        <div class="cube-box ">
+            <a href="/tags/redis/">#redis</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
         </div>
         
     </div>

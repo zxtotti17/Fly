@@ -189,6 +189,8 @@
 <p>这几种返回值有什么区别呢？<br>如果返回的是以reply开头，那么Reply将会作为响应返回给客户端<br>如果返回的是以noreply开头，那么服务器将不会返回任何消息给客户端（这会导致客户端阻塞，因为客户端调用的gen_server:call方法是一个同步调用，当它发出请求后，会一直等待服务器发送响应消息，除非等待超时） </p>
 <p>6.gen_server:cast(ServerRef, Request)<br>这个方法同gen_server:call(ServerRef, Request)，但它最大的区别就是该调用是异步的，它不需要等待服务器返回任何处理结果 </p>
 <p>7.Module:handle_cast(Request, State) -&gt; Result<br>这个方法用来处理gen_server:cast(ServerRef, Request)发出的请求，由于不会返回结果给客户端，所以参数列表中也没有From </p>
+<p>8.检查进程是否加载<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erlang:whereis(?MODULE).</span><br></pre></td></tr></table></figure></p>
+<p>9.查看进程的信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erlang:process_info(pid(0,PID,0)).</span><br></pre></td></tr></table></figure></p>
 
     </div>
 </div>
@@ -196,10 +198,17 @@
 <div class="cube-article-nav">
     <ul>
         
+        <li class="prev">
+            <a href="/2019/04/25/hello-world/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                Hello World
+            </a>
+        </li>
+        
         
         <li class="next">
-            <a href="/2019/03/07/Erlang语言学习/">
-                Erlang语言学习
+            <a href="/2019/03/07/Erlang List模块函数使用大全/">
+                Erlang List模块函数使用大全
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -288,7 +297,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
+                    <a href="/2019/04/25/hello-world/" title="Hello World">Hello World</a>
                 </p>
             </div>
             
@@ -302,7 +311,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/07/Erlang语言学习/" title="Erlang语言学习">Erlang语言学习</a>
+                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
                 </p>
             </div>
         </li>
@@ -315,7 +324,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
+                    <a href="/2019/03/07/Erlang List模块函数使用大全/" title="Erlang List模块函数使用大全">Erlang List模块函数使用大全</a>
                 </p>
             </div>
         </li>
@@ -328,7 +337,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
+                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
                 </p>
             </div>
         </li>
@@ -341,7 +350,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/10/31/Mysql笔记/" title="Mysql笔记">Mysql笔记</a>
+                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
                 </p>
             </div>
         </li>
@@ -359,18 +368,18 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/开发环境安装/">#开发环境安装</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/开发语言/">#开发语言</a>
+            <a href="/categories/数据库/">#数据库</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/数据库/">#数据库</a>
+            <a href="/categories/脚本工具/">#脚本工具</a>
         </div>
         
         
@@ -380,7 +389,7 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/脚本工具/">#脚本工具</a>
+            <a href="/categories/开发语言/">#开发语言</a>
         </div>
         
     </div>
@@ -396,22 +405,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Sentry/">#Sentry</a>
+            <a href="/tags/Erlang/">#Erlang</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/node-js/">#node.js</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/hexo/">#hexo</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
         </div>
         
         
@@ -420,12 +424,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/redis/">#redis</a>
+        <div class="cube-box ">
+            <a href="/tags/Sentry/">#Sentry</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Ruby-on-Rails/">#Ruby on Rails</a>
         </div>
         
@@ -440,13 +444,18 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/td-agent/">#td-agent</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Erlang/">#Erlang</a>
+            <a href="/tags/redis/">#redis</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
         </div>
         
     </div>

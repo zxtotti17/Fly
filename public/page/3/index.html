@@ -161,6 +161,37 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-alchemist_manage服务器部署">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/07/11/alchemist-manage服务器部署/">alchemist_manage服务器部署</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-07-11
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Ruby-on-Rails/" class="cube-excerpt-tag-link">#Ruby on Rails</a>
+                
+                <a href="/tags/Capistrano-自动部署工具/" class="cube-excerpt-tag-link">#Capistrano 自动部署工具</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <ol>
+<li>manage服务器代码上传<br>copy srpg_too 目录到 /var/webapps/alchemist_mnt    (文件所有者必须为webapp)</li>
+<li>ruby运行环境构建<br>2.1 检查依赖<br>-ruby(v2.2.2p95~)<br>-gem bundle<br>-Node.js<br>-npm<br>-bower<br>-msyql<br>-redis<br>2.1 设置gem源为淘宝源<br>Gemfile （描述gem之间依赖文件）需要如下修改<br>source ‘<a href="https://gems.ruby-china.org/&#39;" target="_blank" rel="noopener">https://gems.ruby-china.org/&#39;</a><br>2.2  安装gem file<br>su  - webapp<br>bundle install<br>2.2.1 安装bundle 命令不存在，。<br>gem install bundle<br>2.2.2 提示gem命令不存在，就执行rbenv global 2.2.2， 如果无法运行就重新安装ruby 2.2.2 版本，流程如下<br>su - webapp<br>git clone <a href="https://github.com/rbenv/rbenv.git" target="_blank" rel="noopener">https://github.com/rbenv/rbenv.git</a> ~/.rbenv<br>cd ~/.rbenv &amp;&amp; src/configure &amp;&amp; make -C src<br>echo ‘export PATH=”$HOME/.rbenv/bin:$PATH”‘ &gt;&gt; ~/.bash_profile<br>~/.rbenv/bin/rbenv init<br>echo ‘eval “$(rbenv init -)”‘ &gt;&gt; ~/.bash_profile<br>source ~/.bash_profile<br>git clone <a href="https://github.com/rbenv/ruby-build.git" target="_blank" rel="noopener">https://github.com/rbenv/ruby-build.git</a> ~/.rbenv/plugins/ruby-build<br>rbenv install 2.2.2<br>rbenv global 2.2.2<br>ruby -v</li></ol>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/07/11/alchemist-manage服务器部署/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-hexo 常用笔记">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/07/03/hexo-安装遇到的问题/">hexo 常用笔记</a></h1>
@@ -193,40 +224,6 @@
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2018/07/03/hexo-安装遇到的问题/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Hello World">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/06/15/hello-world/">Hello World</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-06-15
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/06/15/hello-world/">阅读全文</a>
     </footer>
 </div>
 
@@ -344,7 +341,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
+                    <a href="/2019/04/25/hello-world/" title="Hello World">Hello World</a>
                 </p>
             </div>
             
@@ -358,7 +355,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/07/Erlang语言学习/" title="Erlang语言学习">Erlang语言学习</a>
+                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
                 </p>
             </div>
         </li>
@@ -371,7 +368,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
+                    <a href="/2019/03/07/Erlang List模块函数使用大全/" title="Erlang List模块函数使用大全">Erlang List模块函数使用大全</a>
                 </p>
             </div>
         </li>
@@ -384,7 +381,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
+                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
                 </p>
             </div>
         </li>
@@ -397,7 +394,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/10/31/Mysql笔记/" title="Mysql笔记">Mysql笔记</a>
+                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
                 </p>
             </div>
         </li>
@@ -420,13 +417,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/开发语言/">#开发语言</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/数据库/">#数据库</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/数据库/">#数据库</a>
+            <a href="/categories/脚本工具/">#脚本工具</a>
         </div>
         
         
@@ -435,8 +432,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/脚本工具/">#脚本工具</a>
+        <div class="cube-box ">
+            <a href="/categories/开发语言/">#开发语言</a>
         </div>
         
     </div>
@@ -451,8 +448,8 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
-            <a href="/tags/Sentry/">#Sentry</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Erlang/">#Erlang</a>
         </div>
         
         
@@ -461,13 +458,8 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/hexo/">#hexo</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
         </div>
         
         
@@ -476,8 +468,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/redis/">#redis</a>
+        <div class="cube-box ">
+            <a href="/tags/Sentry/">#Sentry</a>
         </div>
         
         
@@ -491,7 +483,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/nginx/">#nginx</a>
         </div>
         
@@ -502,7 +494,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Erlang/">#Erlang</a>
+            <a href="/tags/redis/">#redis</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
         </div>
         
     </div>

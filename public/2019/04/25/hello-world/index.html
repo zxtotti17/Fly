@@ -10,7 +10,7 @@
     
     
     
-    <title>翻译提取替换 | Fly blog</title>
+    <title>Hello World | Fly blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -161,13 +161,13 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">翻译提取替换</h1>
+    <h1 class="title">Hello World</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2018-08-03
+            2019-04-25
         </div>
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
@@ -177,20 +177,15 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <ol>
-<li>提取<br>提取客户端资源文件之前先要用uc-utf8.php转utf-8 把unicode码转成utf-8的日文在提取<br>将要提取文字的文件整合与getFromHtml.sh 放在同目录下<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#sh getFromHtml.sh under the template fold</span></span><br><span class="line"><span class="comment">#Change filelist.csv to excel file, and give it to translator</span></span><br><span class="line"></span><br><span class="line">LANG=C grep -r -n -v <span class="string">'^[[:cntrl:][:print:]]*$'</span> . | grep -v <span class="string">"using UnityEngine;"</span> | grep -v svn | grep -v //  | grep -v \* |  grep -v <span class="string">"\&#123;\*"</span> |  grep -v <span class="string">"\"Name\""</span> &gt; ~/lj_2_3_server.csv</span><br><span class="line"></span><br><span class="line">sed -i <span class="string">'s@\t@ @g'</span> ~/lj_2_3_server.csv</span><br><span class="line">sed -i <span class="string">'s@\([^:]*\):\([0-9]*\):@\1\t\2\t@'</span> ~/lj_2_3_server.csv</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><a href="/download/getFromHtml.sh">点击下载</a><br><a id="more"></a></p>
-<p>可以脚本文件内修改输出路径及文件名<br>运行命令提取内容<br>sh getFromHtml</p>
-<p>取出后的excel先在编辑软件里打开编码改成ansi, 否则直接excel打开会乱码<br>在excel内，全选，点击数据-&gt;分列-&gt;分隔符号-&gt;Tab键-&gt;确定。。。。以Tab键分割内容<br>完成后的数据格式如下：(A列为行数，B列为行号，C列为提取的原字符)<br><img src="/zxtotti17.github.io/2018/08/03/翻译提取替换/A46180F494E722BBE7AB60D25E81DD0B.jpg" alt="A46180F494E722BBE7AB60D25E81DD0B"><br>如果有发现提取到不需要翻译的错误的，可直接整行删除。。。<br>提交翻译</p>
-<ol start="2">
-<li>替换<br>翻译后的文件如果为xls，在最后另起一列，用公式=A1&amp;”^”&amp;B1&amp;”^”&amp;C1连接，拖到底，用连接的主要目的是让文件、行、数据之间有个特殊的符号分割<br>^ 这个符号基本见不到所以用这个，将最后列的数据拷贝到sublime，替换”^ “ 为 “^”去掉多余的数据与行之间的一个空格，然后将\替换为@@@或者奇怪<br>不重复的符号，如果不替换转换会被转换掉，最后将sublime上的代码考到新建的一个txt中另存为utf-8，上传到服务器对应的目录下面，修改<br>changeHtml.sh这个文件中判断中间的分割符号保存，整个文件权限777.</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#sh changeHtml.sh  result_file</span></span><br><span class="line"><span class="comment">#result_file' content</span></span><br><span class="line"><span class="comment">#file's path    line_no old_content     new_content</span></span><br><span class="line"></span><br><span class="line">file=<span class="variable">$1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="variable">$file</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Input result_file"</span></span><br><span class="line">        <span class="built_in">exit</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">        IFS=<span class="string">"^"</span></span><br><span class="line">        arr=(<span class="variable">$line</span>)</span><br><span class="line">        filename=<span class="variable">$&#123;arr[0]&#125;</span></span><br><span class="line">        line_num=<span class="variable">$&#123;arr[1]&#125;</span></span><br><span class="line">        str_kr=<span class="variable">$&#123;arr[2]&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$str_kr</span> ]</span><br><span class="line">        <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$line_num</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$str_kr</span></span><br><span class="line"></span><br><span class="line">                sed -i <span class="string">''</span><span class="variable">$line_num</span><span class="string">' c\'</span><span class="variable">$str_kr</span><span class="string">''</span>  <span class="variable">$filename</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">echo</span> <span class="variable">$line</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span> &lt; <span class="variable">$file</span></span><br></pre></td></tr></table></figure>
-<p>运行命令替换内容<br>sh changeHtml.sh text.txt </p>
-<p>运行完.asset的文件是没办法替换的，要手动自行替换</p>
-<p>text.txt数据格式如下<br><img src="/zxtotti17.github.io/2018/08/03/翻译提取替换/326AD4E2572831FEFC87D564932D6106.jpg" alt="326AD4E2572831FEFC87D564932D6106"><br><a href="/download/changeHtml.sh">点击下载</a>       </p>
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
     </div>
 </div>
@@ -198,17 +193,10 @@
 <div class="cube-article-nav">
     <ul>
         
-        <li class="prev">
-            <a href="/2018/08/21/node笔记/">
-                <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                node笔记
-            </a>
-        </li>
-        
         
         <li class="next">
-            <a href="/2018/08/01/redis笔记/">
-                redis笔记
+            <a href="/2019/04/09/Erlang-OTP学习/">
+                Erlang OTP学习
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -373,12 +361,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/数据库/">#数据库</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/脚本工具/">#脚本工具</a>
         </div>
         
@@ -388,7 +376,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/开发语言/">#开发语言</a>
         </div>
         
@@ -409,7 +397,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/node-js/">#node.js</a>
         </div>
         
@@ -419,7 +407,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/mysql/">#mysql</a>
         </div>
         
@@ -434,7 +422,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
         </div>
         
@@ -444,12 +432,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/td-agent/">#td-agent</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/redis/">#redis</a>
         </div>
         

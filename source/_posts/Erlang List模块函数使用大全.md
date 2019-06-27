@@ -1,6 +1,6 @@
 ---
 title: Erlang List模块函数使用大全
-date: 2019-03-07 19:49:16
+date: 2019-05-07 19:49:16
 tags:
 	- Erlang
 ---

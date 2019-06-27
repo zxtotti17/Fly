@@ -161,6 +161,35 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-pomelo学习笔记">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/10/23/pomelo学习笔记/">pomelo学习笔记</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-10-23
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/node-js/" class="cube-excerpt-tag-link">#node.js</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>环境<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">getBase()	 Application.getBase(); 获取应用程序的基本路径</span><br><span class="line"><span class="built_in">set</span>(setting, val, attach);	 Application.set();  setting:应用程序的配置；val:需要设置的值；attach:是否将设配置应用到程序。设置或返回配置的值。</span><br><span class="line">get(setting)	 Application.get(); setting:应用程序的配置。获取配置的值</span><br><span class="line">enabled(setting)	 Application.enabled(); setting:应用程序的配置。检查配置是否启用</span><br><span class="line">disabled(setting)	 Application.disabled(); setting:应用程序的配置。检查配置是否禁用</span><br><span class="line">enbale(setting)	 Application.enbale(); setting:应用程序的配置。启用配置</span><br><span class="line"><span class="built_in">disable</span>(setting)	 Application.disabled(); setting:应用程序的配置。禁用配置</span><br><span class="line">configure(env,fn,<span class="built_in">type</span>)	Application.configure();env:应用环境;fn:回调函数;<span class="built_in">type</span>:服务类型.</span><br></pre></td></tr></table></figure></p>
+<p>初始化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">start()	 Application.start(); 启动应用程序。它会加载默认的组件和启动所有加载的组件。</span><br><span class="line">registerAdmin(moduleId,module,opts)	 Application.registerAdmin();  moduleId:(可选参数)模块id或者有modeule提供的模块Id;module:模块对象或者模块的工程函数;opts:模块构造函数的参数。</span><br><span class="line">filter(filter)	 Application.filter(); filter:provide before and after filter method。add a filter to before and after filter</span><br><span class="line">before(bf)	 Application.before(); bf:before filter。Add before filter</span><br><span class="line">after(af)	 Application.after(); af:after filter。Add after filter</span><br><span class="line">load(name, component, opts)	 Application.load(); name:组件的名称（可选）；component：组件的实例或者组件的工厂函数；opts：组件构造函数的参数（可选）。加载组件</span><br><span class="line">loadConfig(key,val)	 Application.loadConfig(); key:环境配置的关键字;val:环境配置的值。导入json文件来配置环境。</span><br></pre></td></tr></table></figure>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/10/23/pomelo学习笔记/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-node笔记">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/08/21/node笔记/">node笔记</a></h1>
@@ -315,37 +344,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-alchemist_manage服务器部署">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/07/11/alchemist-manage服务器部署/">alchemist_manage服务器部署</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-07-11
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Ruby-on-Rails/" class="cube-excerpt-tag-link">#Ruby on Rails</a>
-                
-                <a href="/tags/Capistrano-自动部署工具/" class="cube-excerpt-tag-link">#Capistrano 自动部署工具</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <ol>
-<li>manage服务器代码上传<br>copy srpg_too 目录到 /var/webapps/alchemist_mnt    (文件所有者必须为webapp)</li>
-<li>ruby运行环境构建<br>2.1 检查依赖<br>-ruby(v2.2.2p95~)<br>-gem bundle<br>-Node.js<br>-npm<br>-bower<br>-msyql<br>-redis<br>2.1 设置gem源为淘宝源<br>Gemfile （描述gem之间依赖文件）需要如下修改<br>source ‘<a href="https://gems.ruby-china.org/&#39;" target="_blank" rel="noopener">https://gems.ruby-china.org/&#39;</a><br>2.2  安装gem file<br>su  - webapp<br>bundle install<br>2.2.1 安装bundle 命令不存在，。<br>gem install bundle<br>2.2.2 提示gem命令不存在，就执行rbenv global 2.2.2， 如果无法运行就重新安装ruby 2.2.2 版本，流程如下<br>su - webapp<br>git clone <a href="https://github.com/rbenv/rbenv.git" target="_blank" rel="noopener">https://github.com/rbenv/rbenv.git</a> ~/.rbenv<br>cd ~/.rbenv &amp;&amp; src/configure &amp;&amp; make -C src<br>echo ‘export PATH=”$HOME/.rbenv/bin:$PATH”‘ &gt;&gt; ~/.bash_profile<br>~/.rbenv/bin/rbenv init<br>echo ‘eval “$(rbenv init -)”‘ &gt;&gt; ~/.bash_profile<br>source ~/.bash_profile<br>git clone <a href="https://github.com/rbenv/ruby-build.git" target="_blank" rel="noopener">https://github.com/rbenv/ruby-build.git</a> ~/.rbenv/plugins/ruby-build<br>rbenv install 2.2.2<br>rbenv global 2.2.2<br>ruby -v</li></ol>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/07/11/alchemist-manage服务器部署/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-6">
@@ -460,7 +458,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
+                    <a href="/2019/04/25/hello-world/" title="Hello World">Hello World</a>
                 </p>
             </div>
             
@@ -474,7 +472,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/07/Erlang语言学习/" title="Erlang语言学习">Erlang语言学习</a>
+                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
                 </p>
             </div>
         </li>
@@ -487,7 +485,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
+                    <a href="/2019/03/07/Erlang List模块函数使用大全/" title="Erlang List模块函数使用大全">Erlang List模块函数使用大全</a>
                 </p>
             </div>
         </li>
@@ -500,7 +498,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
+                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
                 </p>
             </div>
         </li>
@@ -513,7 +511,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/10/31/Mysql笔记/" title="Mysql笔记">Mysql笔记</a>
+                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
                 </p>
             </div>
         </li>
@@ -536,13 +534,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/categories/开发语言/">#开发语言</a>
+        <div class="cube-box-bg ">
+            <a href="/categories/数据库/">#数据库</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/数据库/">#数据库</a>
+            <a href="/categories/脚本工具/">#脚本工具</a>
         </div>
         
         
@@ -551,8 +549,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/脚本工具/">#脚本工具</a>
+        <div class="cube-box ">
+            <a href="/categories/开发语言/">#开发语言</a>
         </div>
         
     </div>
@@ -568,32 +566,27 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Sentry/">#Sentry</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/node-js/">#node.js</a>
+            <a href="/tags/Erlang/">#Erlang</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/node-js/">#node.js</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/hexo/">#hexo</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/mysql/">#mysql</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/redis/">#redis</a>
+            <a href="/tags/Sentry/">#Sentry</a>
         </div>
         
         
@@ -602,7 +595,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
         </div>
         
@@ -618,7 +611,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Erlang/">#Erlang</a>
+            <a href="/tags/redis/">#redis</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
         </div>
         
     </div>
