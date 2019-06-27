@@ -47,3 +47,13 @@ Result为handle_call 请求处理结果，它有以下几种类型
 
 7.Module:handle_cast(Request, State) -> Result 
 这个方法用来处理gen_server:cast(ServerRef, Request)发出的请求，由于不会返回结果给客户端，所以参数列表中也没有From 
+
+8.检查进程是否加载
+``` bash
+erlang:whereis(?MODULE).
+```
+
+9.查看进程的信息
+``` bash
+erlang:process_info(pid(0,PID,0)).
+```
