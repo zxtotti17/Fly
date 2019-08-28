@@ -19,7 +19,8 @@
     "hexo-renderer-marked": "^0.3.0",
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0",
-    "leancloud-storage": "^3.7.3"
+    "leancloud-storage": "^3.7.3",
+    "mixin-deep": "^2.0.1"
   },
   "devDependencies": {
     "gulp-watch": "^5.0.0"

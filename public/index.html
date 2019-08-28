@@ -161,6 +161,80 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-游戏中大型自动比赛玩法设计">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/07/30/游戏中大型比赛玩法设计思路/">游戏中大型自动比赛玩法设计</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-07-30
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>争霸赛赛程范例<br>3月1日 0：00~3月3日 12:00    报名    40级以上手动报名<br>3月3日 13：00    淘汰赛    “13:00取数据，提前1小时向玩家发送邮件提醒<br>13:10开始出战报，每隔5分钟出1场战报<br>天榜负5局进入地榜，地榜负5局则被淘汰”<br>3月4日 14:00    16强赛（32进16）    “每小时1局，每局取1次数据，5局3胜制<br>天地榜同时进行<br>比赛开始前1小时向玩家发送邮件提醒取数据制度”<br>3月5日 14:00    16进8<br>3月6日 14:00    8进4<br>3月7日 14:00    半决赛<br>3月8日 14:00    决赛<br>3月8日 决赛全部结束    统一发放奖励    </p>
+<p>比赛的时间控制由单独时间进程来控制时间的推进，相当于php中的crontab,表结构上一个玩家比赛进程表player_race,<br>一个各阶段玩家成员信息表player_race_member，后期系统匹配各阶段玩家匹配信息表player_race_opponent，<br>一个各阶段玩家战报信息表player_race_report，一个各阶段玩家结果表player_race_result，<br>玩家表可以分为  玩家比赛信息表  player_st_jjc_race 玩家匹配信息表 player_st_jjc_race_opponent 玩家日志表 player_st_jjc_race_score_log</p>
+<p>第一步 报名<br>很简单直接报名请求记录玩家数据就行,报名时间结束时触发事件对所有玩家进行匹配<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> try_get_player_server_war(PlayerId) of</span><br><span class="line">    null -&gt;</span><br><span class="line">        Tran = fun() -&gt;</span><br><span class="line">            game_db:write(<span class="comment">#player_server_war &#123;</span></span><br><span class="line">                player_id  = PlayerId, </span><br><span class="line">                apply_time = lib_misc:get_local_timestamp()</span><br><span class="line">            &#125;)</span><br><span class="line">            % mod_deploy:get(PlayerId, ?RACE_SERVER_WAR)</span><br><span class="line">        end, </span><br><span class="line">        game_db:<span class="keyword">do</span>(Tran);</span><br><span class="line">    _ -&gt;</span><br><span class="line">        <span class="built_in">exit</span>(already_apply)</span><br><span class="line">end.</span><br><span class="line"></span><br><span class="line">% 本服报名结束手机玩家数据</span><br><span class="line">apply_over() -&gt;</span><br><span class="line">    List = get_all_player_server_war(),</span><br><span class="line">    Tran = fun() -&gt;</span><br><span class="line">        lists:foreach(</span><br><span class="line">            fun(Rec) -&gt;</span><br><span class="line">                game_db:write(Rec <span class="comment">#player_server_war &#123;</span></span><br><span class="line">                    race_step = ?RS_TIAN_BANG_TAOTAI</span><br><span class="line">                &#125;)</span><br><span class="line">            end, </span><br><span class="line">            List</span><br><span class="line">        )</span><br><span class="line">    end,</span><br><span class="line">    game_db:<span class="keyword">do</span>(Tran),</span><br><span class="line">    ?INFO(<span class="string">"apply_over"</span>,[]),</span><br><span class="line">    ZoneList = lists:foldl(</span><br><span class="line">        fun(PlayerServerWar, R) -&gt;</span><br><span class="line">            [PlayerServerWar <span class="comment">#player_server_war.player_id | R]</span></span><br><span class="line">        end,</span><br><span class="line">        [],</span><br><span class="line">        get_all_player_server_war()</span><br><span class="line">    ),</span><br><span class="line"></span><br><span class="line">    mod_race:init_race_member(</span><br><span class="line">       ?RACE_SERVER_WAR,</span><br><span class="line">       0,</span><br><span class="line">       ?RS_TIAN_BANG_TAOTAI,</span><br><span class="line">       0,</span><br><span class="line">       ZoneList,</span><br><span class="line">       normal</span><br><span class="line">    ).</span><br></pre></td></tr></table></figure></p>
+<p>注意的是用一个单独的进程来管理活动步骤开启结束<br><img src="/zxtotti17.github.io/2019/07/30/游戏中大型比赛玩法设计思路/Er15646489002180.png" alt="Er15646489002180"><br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/07/30/游戏中大型比赛玩法设计思路/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Erlang List模块函数使用大全">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/05/07/Erlang List模块函数使用大全/">Erlang List模块函数使用大全</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-05-07
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Erlang/" class="cube-excerpt-tag-link">#Erlang</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>Erlang List模块函数使用大全</p>
+<p>一，带函数Pred<br>1, all(Pred, List) -&gt; boolean()<br>如果List中的每个元素作为Pred函数的参数执行，结果都返回true，那么all函数返回true，<br>否则返回false</p>
+<p>例子：</p>
+<p>lists:all(fun(E) -&gt; true end,[1,2,3,4]).</p>
+<p>结果</p>
+<p>true</p>
+<p>2, any(Pred, List) -&gt; boolean()<br>如果List中至少有一个元素作为Pred函数的参数执行，结果返回true，那么any函数返回true，<br>否则返回false</p>
+<p>例子</p>
+<p>lists:any(fun(E) -&gt; is_integer(E) end,[q,2,a,4]).</p>
+<p>结果</p>
+<p>true</p>
+<p>3，dropwhile(Pred, List1) -&gt; List2<br>将List1列表中的元素作为参数执行Pred函数，如果返回true，将其丢弃，最后返回剩余元素<br>组成的列表</p>
+<p>例子</p>
+<p>lists:dropwhile(fun(E) -&gt; is_atom(E) end,[a,1,2,a,b]).</p>
+<p>结果</p>
+<p>[1,2,a,b]</p>
+<p>4，filter(Pred, List1) -&gt; List2<br>返回一个列表，这个列表是由List1中执行Pred函数返回true的元素组成。</p>
+<p>lists:filter(fun(E) -&gt; is_integer(E) end,[q,2,a,4]).</p>
+<p>结果：</p>
+<p>[2,4]</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/05/07/Erlang List模块函数使用大全/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-Hello World">
     <header class="cube-excerpt-header">
         <h1><a href="/2019/04/25/hello-world/">Hello World</a></h1>
@@ -231,52 +305,6 @@
     </article>
     <footer class="cube-excerpt-footer">
         <a class="cube-excerpt-more" href="/2019/04/09/Erlang-OTP学习/">阅读全文</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Erlang List模块函数使用大全">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/03/07/Erlang List模块函数使用大全/">Erlang List模块函数使用大全</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-03-07
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Erlang/" class="cube-excerpt-tag-link">#Erlang</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>Erlang List模块函数使用大全</p>
-<p>一，带函数Pred<br>1, all(Pred, List) -&gt; boolean()<br>如果List中的每个元素作为Pred函数的参数执行，结果都返回true，那么all函数返回true，<br>否则返回false</p>
-<p>例子：</p>
-<p>lists:all(fun(E) -&gt; true end,[1,2,3,4]).</p>
-<p>结果</p>
-<p>true</p>
-<p>2, any(Pred, List) -&gt; boolean()<br>如果List中至少有一个元素作为Pred函数的参数执行，结果返回true，那么any函数返回true，<br>否则返回false</p>
-<p>例子</p>
-<p>lists:any(fun(E) -&gt; is_integer(E) end,[q,2,a,4]).</p>
-<p>结果</p>
-<p>true</p>
-<p>3，dropwhile(Pred, List1) -&gt; List2<br>将List1列表中的元素作为参数执行Pred函数，如果返回true，将其丢弃，最后返回剩余元素<br>组成的列表</p>
-<p>例子</p>
-<p>lists:dropwhile(fun(E) -&gt; is_atom(E) end,[a,1,2,a,b]).</p>
-<p>结果</p>
-<p>[1,2,a,b]</p>
-<p>4，filter(Pred, List1) -&gt; List2<br>返回一个列表，这个列表是由List1中执行Pred函数返回true的元素组成。</p>
-<p>lists:filter(fun(E) -&gt; is_integer(E) end,[q,2,a,4]).</p>
-<p>结果：</p>
-<p>[2,4]</p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/03/07/Erlang List模块函数使用大全/">阅读全文</a>
     </footer>
 </div>
 
@@ -366,33 +394,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Mysql笔记">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/10/31/Mysql笔记/">Mysql笔记</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-10-31
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/mysql/" class="cube-excerpt-tag-link">#mysql</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>第1章 SQL基础<br>1.数据分为DDL(数据定义语言)，DML(数据操纵语言)，DCL(数据控制语言)<br>    1.1 DDL语句<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">create database test1;</span><br><span class="line">use test1;</span><br><span class="line">show tables;   								<span class="comment">#查看所有表</span></span><br><span class="line">drop database test1;</span><br><span class="line">create table emp(ename varchar(10),hiredate date,sal decimal(2,10),deptno int(2));</span><br><span class="line">desc emp;									<span class="comment">#查看表信息</span></span><br><span class="line">show create table emp \G;					<span class="comment">#\G使得记录能够按照字段竖向排列 以便显示更长内容</span></span><br><span class="line">drop table emp;</span><br><span class="line">alter table emp modify ename varchar(20);	<span class="comment">#修改表字段</span></span><br><span class="line">alter table emp add column age int(3);		<span class="comment">#添加字段</span></span><br><span class="line">alter table emp drop colum age				<span class="comment">#删除字段</span></span><br><span class="line">alter table emp change age age123 int(4);	<span class="comment">#字段改名同时修改类型</span></span><br><span class="line">alter table emp add birth date after ename;	<span class="comment">#修改字段排列顺序</span></span><br><span class="line">alter table emp rename emp1;</span><br></pre></td></tr></table></figure></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/10/31/Mysql笔记/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-6">
@@ -468,7 +469,7 @@
     
     
     <div class="count">
-        <a class="count articles"><span>14</span>文章</a>
+        <a class="count articles"><span>15</span>文章</a>
         <a class="count tags"><span>11</span>标签</a>
         <a class="count categories"><span>5</span>分类</a>
     </div>
@@ -507,7 +508,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/25/hello-world/" title="Hello World">Hello World</a>
+                    <a href="/2019/07/30/游戏中大型比赛玩法设计思路/" title="游戏中大型自动比赛玩法设计">游戏中大型自动比赛玩法设计</a>
                 </p>
             </div>
             
@@ -521,7 +522,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
+                    <a href="/2019/05/07/Erlang List模块函数使用大全/" title="Erlang List模块函数使用大全">Erlang List模块函数使用大全</a>
                 </p>
             </div>
         </li>
@@ -534,7 +535,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/07/Erlang List模块函数使用大全/" title="Erlang List模块函数使用大全">Erlang List模块函数使用大全</a>
+                    <a href="/2019/04/25/hello-world/" title="Hello World">Hello World</a>
                 </p>
             </div>
         </li>
@@ -547,7 +548,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
+                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
                 </p>
             </div>
         </li>
@@ -560,7 +561,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
+                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
                 </p>
             </div>
         </li>
@@ -579,12 +580,12 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/开发环境安装/">#开发环境安装</a>
+            <a href="/categories/数据库/">#数据库</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/categories/数据库/">#数据库</a>
+            <a href="/categories/开发环境安装/">#开发环境安装</a>
         </div>
         
         
@@ -620,42 +621,22 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/node-js/">#node.js</a>
+            <a href="/tags/mysql/">#mysql</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/node-js/">#node.js</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/hexo/">#hexo</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/mysql/">#mysql</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Sentry/">#Sentry</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Ruby-on-Rails/">#Ruby on Rails</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/nginx/">#nginx</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/td-agent/">#td-agent</a>
+            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
         </div>
         
         
@@ -665,7 +646,27 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
+            <a href="/tags/nginx/">#nginx</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/td-agent/">#td-agent</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Ruby-on-Rails/">#Ruby on Rails</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Sentry/">#Sentry</a>
         </div>
         
     </div>

@@ -161,6 +161,33 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-Mysql笔记">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/10/31/Mysql笔记/">Mysql笔记</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-10-31
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/mysql/" class="cube-excerpt-tag-link">#mysql</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>第1章 SQL基础<br>1.数据分为DDL(数据定义语言)，DML(数据操纵语言)，DCL(数据控制语言)<br>    1.1 DDL语句<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">create database test1;</span><br><span class="line">use test1;</span><br><span class="line">show tables;   								<span class="comment">#查看所有表</span></span><br><span class="line">drop database test1;</span><br><span class="line">create table emp(ename varchar(10),hiredate date,sal decimal(2,10),deptno int(2));</span><br><span class="line">desc emp;									<span class="comment">#查看表信息</span></span><br><span class="line">show create table emp \G;					<span class="comment">#\G使得记录能够按照字段竖向排列 以便显示更长内容</span></span><br><span class="line">drop table emp;</span><br><span class="line">alter table emp modify ename varchar(20);	<span class="comment">#修改表字段</span></span><br><span class="line">alter table emp add column age int(3);		<span class="comment">#添加字段</span></span><br><span class="line">alter table emp drop colum age				<span class="comment">#删除字段</span></span><br><span class="line">alter table emp change age age123 int(4);	<span class="comment">#字段改名同时修改类型</span></span><br><span class="line">alter table emp add birth date after ename;	<span class="comment">#修改字段排列顺序</span></span><br><span class="line">alter table emp rename emp1;</span><br></pre></td></tr></table></figure></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/10/31/Mysql笔记/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-pomelo学习笔记">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/10/23/pomelo学习笔记/">pomelo学习笔记</a></h1>
@@ -316,34 +343,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-ALC_Sentry">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2018/07/24/ALC-Sentry/">ALC_Sentry</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2018-07-24
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Sentry/" class="cube-excerpt-tag-link">#Sentry</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>1) 安装环境<br>执行命令创建名为sentry的数据库<br>createdb -E utf-8 sentry<br>为sentry项目初始化数据<br>sentry –config=~/.sentry/sentry.conf.py upgrade<br>创建新用户<br>sentry –config=~/.sentry/sentry.conf.py createuser<br>然后就可以启动服务了<br>sentry –config=~/.sentry/sentry.conf.py start<br>另外，还需要启动Worker<br>sentry –config=~/.sentry/sentry.conf.py celery worker -B<br>假设web服务器端口是9000，那么访问localhost:9000就能开始使用sentry了！</p>
-<p>source /usr/local/vir-sentry/bin/activate<br>sentry –config=~/.sentry/sentry.conf.py start &gt;&gt; /usr/local/vir-sentry/logs/sentry.log 2&gt;&amp;1 &amp;<br></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2018/07/24/ALC-Sentry/">阅读全文</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-6">
@@ -419,7 +418,7 @@
     
     
     <div class="count">
-        <a class="count articles"><span>14</span>文章</a>
+        <a class="count articles"><span>15</span>文章</a>
         <a class="count tags"><span>11</span>标签</a>
         <a class="count categories"><span>5</span>分类</a>
     </div>
@@ -458,7 +457,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/25/hello-world/" title="Hello World">Hello World</a>
+                    <a href="/2019/07/30/游戏中大型比赛玩法设计思路/" title="游戏中大型自动比赛玩法设计">游戏中大型自动比赛玩法设计</a>
                 </p>
             </div>
             
@@ -472,7 +471,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
+                    <a href="/2019/05/07/Erlang List模块函数使用大全/" title="Erlang List模块函数使用大全">Erlang List模块函数使用大全</a>
                 </p>
             </div>
         </li>
@@ -485,7 +484,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/07/Erlang List模块函数使用大全/" title="Erlang List模块函数使用大全">Erlang List模块函数使用大全</a>
+                    <a href="/2019/04/25/hello-world/" title="Hello World">Hello World</a>
                 </p>
             </div>
         </li>
@@ -498,7 +497,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
+                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
                 </p>
             </div>
         </li>
@@ -511,7 +510,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2018/12/25/c-设计模式/" title="c++设计模式">c++设计模式</a>
+                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
                 </p>
             </div>
         </li>
@@ -530,12 +529,12 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/开发环境安装/">#开发环境安装</a>
+            <a href="/categories/数据库/">#数据库</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/数据库/">#数据库</a>
+        <div class="cube-box ">
+            <a href="/categories/开发环境安装/">#开发环境安装</a>
         </div>
         
         
@@ -549,7 +548,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/开发语言/">#开发语言</a>
         </div>
         
@@ -565,18 +564,8 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
-            <a href="/tags/Erlang/">#Erlang</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/node-js/">#node.js</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/hexo/">#hexo</a>
+            <a href="/tags/Erlang/">#Erlang</a>
         </div>
         
         
@@ -586,17 +575,22 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Sentry/">#Sentry</a>
+            <a href="/tags/node-js/">#node.js</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Ruby-on-Rails/">#Ruby on Rails</a>
+        <div class="cube-box ">
+            <a href="/tags/hexo/">#hexo</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
+        <div class="cube-box ">
+            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/redis/">#redis</a>
         </div>
         
         
@@ -610,13 +604,18 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/redis/">#redis</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/Ruby-on-Rails/">#Ruby on Rails</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
+            <a href="/tags/Capistrano-自动部署工具/">#Capistrano 自动部署工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Sentry/">#Sentry</a>
         </div>
         
     </div>
