@@ -161,6 +161,74 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-redis笔记">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/08/01/redis笔记/">redis笔记</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-08-01
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/redis/" class="cube-excerpt-tag-link">#redis</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <ol>
+<li><p>Redis是什么、特点、优势<br>redis是Key-Value数据库,数据包含各种数据 字符串String、字典Hash、列表List、集合Set、有序集合SortedSet等<br>redis支持数据持久化，重启再次加载,支持数据备份(支持分布式),Redis是单进程单线程的<br>Redis的优势<br>性能高 读速度110000/s 写速度81000/s<br>丰富的数据类型</p>
+</li>
+<li><p>redis安装（Linux）、启动、退出、设置密码、远程连接<br>2.1 安装redis<br>下载redis安装包（如：redis-2.8.17.tar.gz）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf redis-2.8.17.tar.gz</span><br><span class="line"><span class="built_in">cd</span> redis-2.8.17</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.2 后台启动服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup redis-server &amp;</span><br></pre></td></tr></table></figure></p>
+<p>2.3 启动客户端、验证<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/bin</span><br><span class="line">redis-cli</span><br><span class="line"><span class="built_in">set</span> var <span class="string">"hello world"</span></span><br><span class="line">get var</span><br></pre></td></tr></table></figure></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/08/01/redis笔记/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-项目各种配置文件">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/07/31/项目各种配置文件/">项目各种配置文件</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-07-31
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/nginx/" class="cube-excerpt-tag-link">#nginx</a>
+                
+                <a href="/tags/td-agent/" class="cube-excerpt-tag-link">#td-agent</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <ol>
+<li>srpg.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line"><span class="comment">#    server_name alctwobt.ssl.91dena.cn;</span></span><br><span class="line">    server_name alccn2-release.ssl.91dena.cn;</span><br><span class="line"><span class="comment">#    ssl on;</span></span><br><span class="line">    ssl_certificate /root/cert/91dena_cn.pem;</span><br><span class="line">    ssl_certificate_key /root/cert/91dena_cn.key;</span><br><span class="line"></span><br><span class="line">    proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    proxy_set_header Host <span class="variable">$http_host</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">## APP  11</span></span><br><span class="line">    location / &#123;</span><br><span class="line">        <span class="comment"># proxy</span></span><br><span class="line">        proxy_pass http://127.0.0.1:5000/;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="comment"># connect to backend with keepalives</span></span><br><span class="line"></span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Connection <span class="string">""</span>;</span><br><span class="line">        proxy_send_timeout 30s;</span><br><span class="line">        proxy_read_timeout 60s;</span><br><span class="line">        proxy_connect_timeout 30s;</span><br><span class="line">    &#125;</span><br><span class="line">    access_log  /home/<span class="built_in">log</span>/nginxlog/cnrelease/alccn2.ssl.91dena.cn.access.log main;</span><br><span class="line">    error_log   /home/<span class="built_in">log</span>/nginxlog/cnrelease/alccn2.ssl.91dena.cn.error.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="/download/nginx.conf">点击下载</a><br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/07/31/项目各种配置文件/">阅读全文</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-ALC_Sentry">
     <header class="cube-excerpt-header">
         <h1><a href="/2018/07/24/ALC-Sentry/">ALC_Sentry</a></h1>
@@ -330,8 +398,8 @@
     
     
     <div class="count">
-        <a class="count articles"><span>15</span>文章</a>
-        <a class="count tags"><span>11</span>标签</a>
+        <a class="count articles"><span>17</span>文章</a>
+        <a class="count tags"><span>12</span>标签</a>
         <a class="count categories"><span>5</span>分类</a>
     </div>
 </div>
@@ -369,7 +437,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/07/30/游戏中大型比赛玩法设计思路/" title="游戏中大型自动比赛玩法设计">游戏中大型自动比赛玩法设计</a>
+                    <a href="/2019/11/22/游戏运营活动框架思路/" title="游戏运营活动框架思路">游戏运营活动框架思路</a>
                 </p>
             </div>
             
@@ -383,7 +451,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/05/07/Erlang List模块函数使用大全/" title="Erlang List模块函数使用大全">Erlang List模块函数使用大全</a>
+                    <a href="/2019/08/23/游戏全局通知红点系统/" title="游戏全局通知红点系统">游戏全局通知红点系统</a>
                 </p>
             </div>
         </li>
@@ -396,7 +464,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/25/hello-world/" title="Hello World">Hello World</a>
+                    <a href="/2019/07/30/游戏中大型比赛玩法设计思路/" title="游戏中大型自动比赛玩法设计">游戏中大型自动比赛玩法设计</a>
                 </p>
             </div>
         </li>
@@ -409,7 +477,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/09/Erlang-OTP学习/" title="Erlang OTP学习">Erlang OTP学习</a>
+                    <a href="/2019/05/07/Erlang List模块函数使用大全/" title="Erlang List模块函数使用大全">Erlang List模块函数使用大全</a>
                 </p>
             </div>
         </li>
@@ -422,7 +490,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/03/06/充值流程/" title="充值流程">充值流程</a>
+                    <a href="/2019/04/25/hello-world/" title="Hello World">Hello World</a>
                 </p>
             </div>
         </li>
@@ -445,13 +513,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/开发环境安装/">#开发环境安装</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/categories/脚本工具/">#脚本工具</a>
+            <a href="/categories/开发环境安装/">#开发环境安装</a>
         </div>
         
         
@@ -462,6 +525,11 @@
         
         <div class="cube-box ">
             <a href="/categories/开发语言/">#开发语言</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/脚本工具/">#脚本工具</a>
         </div>
         
     </div>
@@ -481,38 +549,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/mysql/">#mysql</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/node-js/">#node.js</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/hexo/">#hexo</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/redis/">#redis</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/nginx/">#nginx</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/td-agent/">#td-agent</a>
         </div>
         
         
@@ -527,7 +565,42 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/c-设计模式/">#c++ 设计模式</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Sentry/">#Sentry</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/node-js/">#node.js</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/hexo/">#hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/redis/">#redis</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/游戏/">#游戏</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/nginx/">#nginx</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/td-agent/">#td-agent</a>
         </div>
         
     </div>
